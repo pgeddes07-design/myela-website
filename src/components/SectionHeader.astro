@@ -1,0 +1,12 @@
+---
+import Doodle from './Doodle.astro';
+interface Props { title: string; intro?: string; id?: string; sparkle?: boolean }
+const { title, intro, id, sparkle = false } = Astro.props;
+---
+<div class="me-section-head me-section-head--center">
+  <h2 class="me-h2" id={id}>
+    {title}
+    {sparkle && <Doodle shape="sparkle" tone="pink" size={36} class="me-section-head__sparkle" />}
+  </h2>
+  {intro && <p class="me-section-head__intro">{intro}</p>}
+</div>

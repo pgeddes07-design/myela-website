@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import Doodle from './Doodle.astro';
+import Icon from './Icon.astro';
+import WhatsAppButton from './WhatsAppButton.astro';
+import { HERO_CUPS } from '../data/site';
+
+const spots = ['main', 'left', 'right'];
+---
+<section class="me-hero" id="top" aria-labelledby="hero-title">
+  <div class="me-hero__inner">
+    <div class="me-hero__copy">
+      <p class="me-eyebrow">Myela</p>
+      <h1 class="me-h1" id="hero-title">FROZEN YOGHURT.</h1>
+      <p class="me-hero__tagline">
+        Little cups. Big smiles.
+        <Doodle shape="swoosh" tone="white" size={190} class="me-hero__swoosh" />
+      </p>
+    </div>
+
+    <div class="me-hero__media">
+      <div class="me-hero__stage">
+        {HERO_CUPS.map((c, i) => (
+          <Image
+            class={`me-hero__swirl me-hero__swirl--${spots[i]}`}
+            src={c.image}
+            alt={c.alt}
+            widths={[320, 480, 640, 900]}
+            sizes={i === 0 ? '(max-width: 760px) 60vw, 34vw' : '(max-width: 760px) 42vw, 24vw'}
+            loading="eager"
+            fetchpriority={i === 0 ? 'high' : 'auto'}
+          />
+        ))}
+      </div>
+      <Doodle shape="arrow" tone="white" size={84} rotate={22} label="pick a flavour!" labelPosition="start" class="me-hero__note me-hero__note--top" />
+      <Doodle shape="sparkle" tone="white" size={56} class="me-hero__spark me-hero__spark--a" />
+      <Doodle shape="sparkle" tone="white" size={30} class="me-hero__spark me-hero__spark--b" />
+      <Doodle shape="arrow" tone="white" size={72} rotate={200} label="120g + 200g" labelPosition="end" class="me-hero__note me-hero__note--bottom" />
+    </div>
+
+    <div class="me-hero__actions">
+      <p class="me-hero__body">Fun flavours, ready to enjoy in 120g and 200g cups.</p>
+      <div class="me-hero__buttons">
+        <a class="me-btn me-btn--primary me-btn--lg" href="#flavours"><span class="me-btn__label">Explore Flavours</span><Icon name="down" /></a>
+        <WhatsAppButton variant="secondary" size="lg" />
+      </div>
+    </div>
+  </div>
+</section>

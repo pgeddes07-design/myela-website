@@ -1,0 +1,12 @@
+---
+interface Props { name: 'chat' | 'down' | 'arrow' }
+const PATHS = {
+  chat: 'M12 3.5a8.5 8.5 0 0 0-7.4 12.7L3.5 20.5l4.4-1.1A8.5 8.5 0 1 0 12 3.5z',
+  down: 'M12 5v14M6 13l6 6 6-6',
+  arrow: 'M5 12h14M13 6l6 6-6 6',
+};
+const { name } = Astro.props;
+---
+<svg class="me-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+  <path d={PATHS[name]} fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

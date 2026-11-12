@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Wave from '../components/Wave.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import FlavourCard from '../components/FlavourCard.astro';
+import SizeCard from '../components/SizeCard.astro';
+import OutletCard from '../components/OutletCard.astro';
+import StockistPanel from '../components/StockistPanel.astro';
+import Faq from '../components/Faq.astro';
+import Footer from '../components/Footer.astro';
+import MobileOrderBar from '../components/MobileOrderBar.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { FLAVOURS, OUTLETS, SIZES } from '../data/site';
+---
+<Base>
+  <Header />
+  <main id="main">
+    <Hero />
+    <Wave from="lavender" to="white" />
+
+    <section class="me-section me-section--flavours" id="flavours" aria-labelledby="flavours-title">
+      <div class="me-container">
+        <SectionHeader id="flavours-title" title="Find your flavour!" intro="Which one will you choose? Explore the Myela range below." sparkle />
+        <ul class="me-flavour-grid">
+          {FLAVOURS.map((f) => <li><FlavourCard flavour={f} /></li>)}
+        </ul>
+        <div class="me-center">
+          <WhatsAppButton variant="secondary" label="Ask what's available" />
+        </div>
+      </div>
+    </section>
+
+    <section class="me-section me-section--sizes" id="sizes" aria-labelledby="sizes-title">
+      <div class="me-container">
+        <SectionHeader id="sizes-title" title="Two sizes. Lots of happy." intro="A little treat or a little more? Pick the cup that suits you." />
+        <div class="me-grid-2">
+          {SIZES.map((s) => <SizeCard size={s} />)}
+        </div>
+        <p class="me-footnote">Buying in bulk or for a tuckshop? Message us for pricing.</p>
+        <div class="me-center me-center--tight">
+          <WhatsAppButton variant="secondary" label="Check availability" />
+        </div>
+      </div>
+    </section>
+
+    <section class="me-section me-section--blush" id="find-us" aria-labelledby="find-title">
+      <div class="me-container">
+        <SectionHeader id="find-title" title="Where to find Myela" intro="Myela comes to you through selected outlets and events. We don't have our own shop." />
+        <div class="me-grid-3">
+          {OUTLETS.map((o) => <OutletCard {...o} />)}
+        </div>
+        <p class="me-footnote">Availability varies by outlet and event. Please message us to confirm.</p>
+        <div class="me-center me-center--tight">
+          <WhatsAppButton variant="secondary" label="Ask about availability" />
+        </div>
+      </div>
+    </section>
+
+    <section class="me-section" aria-label="Stock Myela">
+      <div class="me-container">
+        <StockistPanel />
+      </div>
+    </section>
+
+    <section class="me-section me-section--blush" id="order" aria-labelledby="order-title">
+      <div class="me-container">
+        <SectionHeader id="order-title" title="Fancy some Myela?" intro="Send us a WhatsApp to check available flavours, sizes and how to order." />
+        <div class="me-center me-center--order">
+          <WhatsAppButton size="lg" />
+        </div>
+        <Faq />
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <MobileOrderBar />
+</Base>

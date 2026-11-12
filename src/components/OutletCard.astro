@@ -1,0 +1,9 @@
+---
+interface Props { label: string; title: string; body: string }
+const { label, title, body } = Astro.props;
+---
+<article class="me-outlet">
+  <span class="me-tag me-tag--mint">{label}</span>
+  <h3 class="me-outlet__title">{title}</h3>
+  <p>{body}</p>
+</article>

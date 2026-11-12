@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/logo-plum.png';
+import WhatsAppButton from './WhatsAppButton.astro';
+
+const links = [
+  { label: 'Flavours', href: '#flavours' },
+  { label: 'Sizes', href: '#sizes' },
+  { label: 'Where to Find', href: '#find-us' },
+  { label: 'Stock Myela', href: '#stock-myela' },
+];
+---
+<header class="me-header">
+  <div class="me-header__inner">
+    <a class="me-header__home" href="#top" aria-label="Myela home">
+      <Image class="me-logo" src={logo} alt="Myela frozen yoghurt" height={72} width={72} densities={[1, 2, 3]} loading="eager" />
+    </a>
+    <nav class="me-header__nav" aria-label="Main">
+      <ul>{links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+    </nav>
+    <div class="me-header__cta">
+      <WhatsAppButton size="sm" shortLabel="Order" />
+    </div>
+    <details class="me-header__menu">
+      <summary aria-label="Menu"><span class="me-burger" aria-hidden="true"><span></span><span></span><span></span></span></summary>
+      <ul>{links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+    </details>
+  </div>
+</header>
+
+<script>
+  // Close the phone menu after a link is tapped.
+  const menu = document.querySelector<HTMLDetailsElement>('.me-header__menu');
+  menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => menu.removeAttribute('open')));
+</script>

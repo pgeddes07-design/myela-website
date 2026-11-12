@@ -1,0 +1,11 @@
+---
+import { FAQS } from '../data/site';
+---
+<div class="me-faq">
+  {FAQS.map((item) => (
+    <details class="me-faq__item">
+      <summary><span>{item.q}</span><span class="me-faq__icon" aria-hidden="true"></span></summary>
+      <div class="me-faq__a"><p>{item.a}</p></div>
+    </details>
+  ))}
+</div>

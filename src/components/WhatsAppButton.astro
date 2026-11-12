@@ -1,0 +1,35 @@
+---
+import Icon from './Icon.astro';
+import { MESSAGES, whatsappLink } from '../data/site';
+
+interface Props {
+  kind?: 'customer' | 'stockist';
+  variant?: 'primary' | 'secondary' | 'light';
+  size?: 'sm' | 'md' | 'lg';
+  block?: boolean;
+  label?: string;
+  shortLabel?: string; // shown on phones, e.g. in the header
+  class?: string;
+}
+const { kind = 'customer', variant = 'primary', size = 'md', block = false, shortLabel, class: cls } = Astro.props;
+const label = Astro.props.label ?? (kind === 'stockist' ? 'Enquire about stocking Myela' : 'Order on WhatsApp');
+const href = whatsappLink(MESSAGES[kind]);
+const classes = ['me-btn', `me-btn--${href ? variant : 'placeholder'}`, `me-btn--${size}`, block && 'me-btn--block', cls].filter(Boolean).join(' ');
+---
+{href ? (
+  <a class={classes} href={href} target="_blank" rel="noopener noreferrer" aria-label={`${label} (opens WhatsApp)`} data-wa={kind}>
+    <Icon name="chat" />
+    {shortLabel ? (
+      <>
+        <span class="me-btn__label me-only-wide">{label}</span>
+        <span class="me-btn__label me-only-narrow">{shortLabel}</span>
+      </>
+    ) : (
+      <span class="me-btn__label">{label}</span>
+    )}
+  </a>
+) : (
+  <button class={classes} type="button" disabled aria-label={`${label} (WhatsApp number not set)`}>
+    <Icon name="chat" /><span class="me-btn__label">{shortLabel ?? label}</span>
+  </button>
+)}

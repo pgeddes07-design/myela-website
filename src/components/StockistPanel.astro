@@ -1,0 +1,17 @@
+---
+import Doodle from './Doodle.astro';
+import WhatsAppButton from './WhatsAppButton.astro';
+const audiences = ['Tuckshops', 'Coffee trucks', 'School events'];
+---
+<section class="me-stockist" id="stock-myela" aria-labelledby="stockist-title">
+  <Doodle shape="sparkle" tone="mint" size={44} class="me-stockist__spark me-stockist__spark--a" />
+  <Doodle shape="burst" tone="light" size={56} class="me-stockist__spark me-stockist__spark--b" />
+  <div class="me-stockist__copy">
+    <h2 class="me-h2" id="stockist-title">Want to stock Myela?</h2>
+    <p class="me-stockist__body">Run a tuckshop, coffee truck or school event? We'd love to hear from you about stocking Myela frozen yoghurt. Message us for bulk and tuckshop pricing.</p>
+    <ul class="me-stockist__aud" aria-label="Who we supply">{audiences.map((a) => <li>{a}</li>)}</ul>
+  </div>
+  <div class="me-stockist__action">
+    <WhatsAppButton kind="stockist" variant="light" size="lg" />
+  </div>
+</section>

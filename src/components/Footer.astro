@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/logo-white.png';
+import { MESSAGES, SITE, whatsappLink } from '../data/site';
+const wa = whatsappLink(MESSAGES.customer);
+const year = new Date().getFullYear();
+const links = [
+  { label: 'Flavours', href: '#flavours' },
+  { label: 'Sizes', href: '#sizes' },
+  { label: 'Find Myela', href: '#find-us' },
+  { label: 'Stock Myela', href: '#stock-myela' },
+];
+---
+<footer class="me-footer">
+  <div class="me-footer__inner">
+    <div class="me-footer__brand">
+      <Image class="me-logo" src={logo} alt="Myela frozen yoghurt" height={136} width={136} densities={[1, 2]} loading="lazy" />
+      <p>Frozen yoghurt in little cups.</p>
+    </div>
+    <nav aria-label="Footer">
+      <ul>
+        {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        {wa && <li><a href={wa} target="_blank" rel="noopener noreferrer">WhatsApp 072 968 8080</a></li>}
+        {SITE.instagram && <li><a href={SITE.instagram} target="_blank" rel="noopener noreferrer">Instagram</a></li>}
+      </ul>
+    </nav>
+    <p class="me-footer__legal">© {year} Myela. All rights reserved.</p>
+  </div>
+</footer>

@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import type { Size } from '../data/site';
+interface Props { size: Size }
+const { size } = Astro.props;
+const tone = size.grams === 120 ? 'mint' : 'lavender';
+---
+<article class={`me-size me-size--${tone}`}>
+  {size.image ? (
+    <div class="me-size__media">
+      <Image src={size.image} alt={size.imageAlt ?? `${size.grams}g Myela cup`} widths={[300, 450, 600]} sizes="(max-width: 760px) 70vw, 340px" loading="lazy" />
+    </div>
+  ) : (
+    <div class="me-photo me-photo--slot me-photo--white me-size__slot" role="img" aria-label={`${size.grams}g Myela cup photo coming soon`}>
+      <span class="me-photo__tag">Photo coming soon</span>
+      <span class="me-photo__label">{size.grams}g Myela cup</span>
+    </div>
+  )}
+  <div class="me-size__body">
+    <div class="me-size__head">
+      <h3 class="me-size__figure">{size.grams}g<span class="me-size__unit"> cup</span></h3>
+      <p class="me-size__price"><span class="me-sr">Price: </span>{size.price}</p>
+    </div>
+    <p>{size.body}</p>
+    {size.note && <span class="me-tag">{size.note}</span>}
+  </div>
+</article>
