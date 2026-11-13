@@ -19,6 +19,9 @@ const jsonLd = {
   name: 'Myela Frozen Yoghurt',
   url: canonical.href,
   logo: new URL(`${base}/icon-512.png`, Astro.site).href,
+  description: SITE.description,
+  address: { '@type': 'PostalAddress', addressLocality: SITE.base, addressRegion: 'Gauteng', addressCountry: 'ZA' },
+  areaServed: [SITE.base, ...SITE.areas.map((a) => a.replace(/^the /, '')), SITE.city].map((name) => ({ '@type': 'Place', name })),
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: `+${WHATSAPP_NUMBER}`,

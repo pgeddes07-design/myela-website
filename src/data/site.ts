@@ -55,9 +55,13 @@ export function whatsappLink(message: string, number: string = WHATSAPP_NUMBER):
 
 export const SITE = {
   name: 'Myela',
-  title: 'Myela Frozen Yoghurt | Little cups. Big smiles.',
+  title: 'Myela Frozen Yoghurt Johannesburg | Little cups. Big smiles.',
   description:
-    'Myela frozen yoghurt in 120g and 200g cups. Eight fun flavours, found at school tuckshops, events and partner outlets. Order or stock Myela on WhatsApp.',
+    'Frozen yoghurt in 120g and 200g cups from Randpark Ridge, Johannesburg. Eight flavours for Randburg, Fourways, Sandton and the West Rand. Order on WhatsApp.',
+  // Where Myela is based and the areas it supplies (used on the page and for Google).
+  base: 'Randpark Ridge',
+  city: 'Johannesburg',
+  areas: ['Randburg', 'Fourways', 'Sandton', 'the West Rand'],
   instagram: '', // add the full Instagram URL once it's confirmed
 };
 
@@ -146,6 +150,10 @@ export const FAQS = [
   {
     q: 'Where can I buy Myela?',
     a: 'You can order directly on WhatsApp. We also supply participating primary-school tuckshops and selected school-event vendors.',
+  },
+  {
+    q: 'Which areas do you cover?',
+    a: "We're based in Randpark Ridge, Johannesburg, and supply Randburg, Fourways, Sandton and the West Rand. A bit further out? Message us and we'll see what we can do.",
   },
   {
     q: 'Can my business stock Myela?',
