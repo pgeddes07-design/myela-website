@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import logo from '../assets/brand/logo-white.png';
+import FruitSketch from './FruitSketch.astro';
+import WhatsAppButton from './WhatsAppButton.astro';
 import { MESSAGES, SITE, whatsappLink } from '../data/site';
 const wa = whatsappLink(MESSAGES.customer);
 const year = new Date().getFullYear();
@@ -13,18 +15,29 @@ const links = [
 ];
 ---
 <footer class="me-footer">
+  <FruitSketch fruit="cherries" tone="white" size={80} class="me-footer__sketch me-footer__sketch--a" />
+  <FruitSketch fruit="strawberry" tone="white" size={70} class="me-footer__sketch me-footer__sketch--b" delay={0.4} />
   <div class="me-footer__inner">
     <div class="me-footer__brand">
-      <Image class="me-logo" src={logo} alt="Myela frozen yoghurt" height={180} width={180} densities={[1, 2]} loading="lazy" />
-      <p>Frozen yoghurt in little cups.</p>
+      <Image class="me-logo" src={logo} alt="Myela frozen yoghurt" height={200} width={200} densities={[1, 2]} loading="lazy" />
+      <p>Frozen yoghurt in little cups.<br />Little cups. Big smiles.</p>
     </div>
-    <nav aria-label="Footer">
+
+    <nav class="me-footer__nav" aria-label="Footer">
+      <p class="me-footer__title">Explore</p>
       <ul>
         {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
-        {wa && <li><a href={wa} target="_blank" rel="noopener noreferrer">WhatsApp 072 968 8080</a></li>}
         {SITE.instagram && <li><a href={SITE.instagram} target="_blank" rel="noopener noreferrer">Instagram</a></li>}
       </ul>
     </nav>
+
+    <div class="me-footer__contact">
+      <p class="me-footer__title">Say hi</p>
+      {wa && <a class="me-footer__phone" href={wa} target="_blank" rel="noopener noreferrer">072 968 8080</a>}
+      <p>Orders, flavours and stockist chats. It all happens on WhatsApp.</p>
+      <WhatsAppButton variant="light" />
+    </div>
+
     <p class="me-footer__legal">© {year} Myela. All rights reserved.</p>
   </div>
 </footer>

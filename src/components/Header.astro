@@ -14,7 +14,9 @@ const links = [
 <header class="me-header">
   <div class="me-header__inner">
     <a class="me-header__home" href="#top" aria-label="Myela home">
-      <Image class="me-logo" src={logo} alt="Myela frozen yoghurt" height={72} width={72} densities={[1, 2, 3]} loading="eager" />
+      <span class="me-header__badge">
+        <Image class="me-logo" src={logo} alt="Myela frozen yoghurt" height={84} width={84} densities={[1, 2, 3]} loading="eager" />
+      </span>
     </a>
     <nav class="me-header__nav" aria-label="Main">
       <ul>{links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
@@ -30,6 +32,15 @@ const links = [
 </header>
 
 <script>
+  // Header badge rolls in once the big hero logo has scrolled away.
+  const header = document.querySelector<HTMLElement>('.me-header');
+  const heroLogo = document.querySelector('.hx__title');
+  if (header && heroLogo && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => header.classList.toggle('has-logo', !e.isIntersecting), { rootMargin: '-88px 0px 0px 0px' }).observe(heroLogo);
+  } else {
+    header?.classList.add('has-logo');
+  }
+
   // Close the phone menu after a link is tapped.
   const menu = document.querySelector<HTMLDetailsElement>('.me-header__menu');
   menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => menu.removeAttribute('open')));
