@@ -1,0 +1,48 @@
+---
+import Doodle from './Doodle.astro';
+import Icon from './Icon.astro';
+import { FLAVOURS, flavourMessage, whatsappLink } from '../data/site';
+const first = FLAVOURS[0];
+---
+<div class="me-pour" style={`--pour-colour:${first.colour}`}>
+  <div class="me-pour__stage">
+    <svg class="me-pour__svg" viewBox="0 0 360 430" role="img" aria-label="Animation of frozen yoghurt being swirled into a Myela cup">
+      <!-- the soft-serve nozzle -->
+      <g class="me-pour__nozzle" fill="rgba(255,255,255,0.35)" stroke="#fff" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M128 -4 H232 V26 Q232 40 218 42 H142 Q128 40 128 26 Z" />
+        <path d="M160 42 L200 42 L190 68 L170 68 Z" />
+        <path d="M176 47 L177 64 M184 47 L183 64" fill="none" />
+        <path d="M144 14 H216" fill="none" opacity="0.7" />
+      </g>
+    </svg>
+    <Doodle shape="sparkle" tone="white" size={30} class="me-pour__spark me-pour__spark--a me-twinkle" />
+    <Doodle shape="sparkle" tone="white" size={20} class="me-pour__spark me-pour__spark--b me-twinkle" />
+  </div>
+
+  <div class="me-pour__panel">
+    <p class="me-pour__hint" aria-hidden="true">tap a flavour!</p>
+    <div class="me-pour__menu" role="group" aria-label="Choose a flavour to pour">
+      {FLAVOURS.map((f, i) => (
+        <button
+          type="button"
+          class="me-pour__btn"
+          data-flavour={f.name}
+          data-colour={f.colour}
+          data-href={whatsappLink(flavourMessage(f.name)) ?? ''}
+          aria-pressed={i === 0 ? 'true' : 'false'}
+        >
+          <span class="me-pour__dot" style={`background:${f.colour}`} aria-hidden="true"></span>
+          {f.name}
+        </button>
+      ))}
+    </div>
+    <p class="me-pour__now"><span class="me-sr">Now pouring: </span><span class="me-pour__name" aria-live="polite">{first.name}</span></p>
+    <a class="me-btn me-btn--primary me-pour__order" href={whatsappLink(flavourMessage(first.name)) ?? '#order'} target="_blank" rel="noopener noreferrer">
+      <Icon name="chat" /><span class="me-btn__label">Order this flavour</span>
+    </a>
+  </div>
+</div>
+
+<script>
+  import '../scripts/pour.ts';
+</script>

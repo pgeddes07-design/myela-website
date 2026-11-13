@@ -35,6 +35,10 @@ export const CUTOUTS = {
 // 072 968 8080 becomes 27729688080.
 export const WHATSAPP_NUMBER = '27729688080';
 
+/** Customer message for one flavour (used by the pour animation's order button). */
+export const flavourMessage = (flavour: string) =>
+  `Hi Myela! I'd like to order some ${flavour} frozen yoghurt. Could you let me know which cup sizes are available, and how ordering works?`;
+
 export const MESSAGES = {
   customer:
     "Hi Myela! I'd like to order some frozen yoghurt. Could you let me know which flavours and cup sizes are available, and how ordering works?",
@@ -60,20 +64,22 @@ export const SITE = {
 export interface Flavour {
   name: string;
   image: ImageMetadata;
+  /** Yoghurt colour for the pour animation. */
+  colour: string;
   /** Leave empty until confirmed per flavour. Shows "Ask about availability" instead. */
   sizes?: string[];
 }
 
 // Order here is the order on the page.
 export const FLAVOURS: Flavour[] = [
-  { name: 'Cherry', image: cherry },
-  { name: 'English Toffee', image: englishToffee },
-  { name: 'Fruits of the Forest', image: fruitsOfTheForest },
-  { name: 'Litchi', image: litchi },
-  { name: 'Mango', image: mango },
-  { name: 'Mixed Berry', image: mixedBerry },
-  { name: 'Passion Fruit', image: passionFruit },
-  { name: 'Strawberry', image: strawberry },
+  { name: 'Cherry', image: cherry, colour: '#e92440' },
+  { name: 'English Toffee', image: englishToffee, colour: '#e6b07a' },
+  { name: 'Fruits of the Forest', image: fruitsOfTheForest, colour: '#ed286a' },
+  { name: 'Litchi', image: litchi, colour: '#f7eacb' },
+  { name: 'Mango', image: mango, colour: '#fe890c' },
+  { name: 'Mixed Berry', image: mixedBerry, colour: '#c64c82' },
+  { name: 'Passion Fruit', image: passionFruit, colour: '#feb432' },
+  { name: 'Strawberry', image: strawberry, colour: '#f59aa5' },
 ];
 
 // The story section. Swap in real photos as they arrive.

@@ -74,3 +74,5 @@ if (reduce || !('IntersectionObserver' in window)) {
   window.addEventListener('resize', queue);
   update();
 }
+
+export {};

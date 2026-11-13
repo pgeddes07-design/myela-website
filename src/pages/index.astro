@@ -16,6 +16,7 @@ import MobileOrderBar from '../components/MobileOrderBar.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import FruitSketch from '../components/FruitSketch.astro';
 import Fly from '../components/Fly.astro';
+import PourStage from '../components/PourStage.astro';
 import { CUTOUTS, FLAVOURS, OUTLETS, SIZES } from '../data/site';
 ---
 <Base>
@@ -34,6 +35,8 @@ import { CUTOUTS, FLAVOURS, OUTLETS, SIZES } from '../data/site';
         <div data-reveal>
           <SectionHeader id="flavours-title" title="Find your flavour!" intro="Which one will you choose? Explore the Myela range below." sparkle />
         </div>
+        <div data-reveal="pop"><PourStage /></div>
+        <p class="me-flavour-intro" data-reveal>And here's the real thing, sealed in its cup:</p>
         <ul class="me-flavour-grid">
           {FLAVOURS.map((f, i) => <li data-reveal style={`--delay:${(i % 4) * 80}ms`}><FlavourCard flavour={f} /></li>)}
         </ul>
