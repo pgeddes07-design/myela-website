@@ -341,3 +341,10 @@ main { overflow-x: clip; }
 /* Size cards: equal heights side by side */
 .me-section--sizes .me-grid-2 > div { display: flex; }
 .me-section--sizes .me-size { width: 100%; }
+
+/* Main hero cup is the page's largest image: visible from the first frame (better LCP), still bounces in */
+.motion .hx__cup--main img { animation-name: me-cup-in-main; animation-delay: 0s; }
+@keyframes me-cup-in-main {
+  from { transform: translateY(70px) scale(0.92); }
+  to { transform: none; }
+}
