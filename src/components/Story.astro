@@ -4,6 +4,7 @@ import logo from '../assets/brand/logo-plum.png';
 import FruitSketch from './FruitSketch.astro';
 import Fly from './Fly.astro';
 import Doodle from './Doodle.astro';
+import sketch from '../assets/story/miya-ella-sketch.webp';
 import { CUTOUTS, STORY } from '../data/site';
 ---
 <section class="me-section me-story" id="story" aria-labelledby="story-title">
@@ -15,10 +16,11 @@ import { CUTOUTS, STORY } from '../data/site';
 
   <div class="me-container me-story__grid">
     <div class="me-story__art" data-reveal="pop">
-      <div class="me-story__card">
-        <Image class="me-story__logo" src={logo} alt="Myela frozen yoghurt logo" width={340} height={340} densities={[1, 2]} loading="lazy" />
-        {STORY.note && <p class="me-story__note" aria-hidden="true">{STORY.note}</p>}
-      </div>
+      <figure class="me-story__frame">
+        <Image class="me-story__sketch" src={sketch} alt="Pencil sketch of Miya and Ella: one pulling the lever to swirl frozen yoghurt into a cup, the other tucking into hers with a spoon." widths={[480, 720, 960, 1280]} sizes="(max-width: 760px) 92vw, 620px" loading="lazy" />
+        {STORY.note && <figcaption class="me-story__note">{STORY.note}</figcaption>}
+        <span class="me-story__badge"><Image src={logo} alt="" width={120} height={120} densities={[1, 2]} loading="lazy" /></span>
+      </figure>
       <Doodle shape="sparkle" tone="white" size={40} class="me-story__spark me-story__spark--a me-twinkle" />
       <Doodle shape="sparkle" tone="white" size={28} class="me-story__spark me-story__spark--b me-twinkle" />
     </div>

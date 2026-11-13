@@ -303,3 +303,37 @@ main { overflow-x: clip; }
   .me-footer__contact .me-btn { width: 100%; }
   .me-footer__sketch--a { left: auto; right: 6%; top: 24px; }
 }
+
+/* Story: sketch of the girls in a pinned paper frame */
+.me-story__grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+.me-story__frame {
+  position: relative; margin: 0; padding: var(--space-3) var(--space-3) var(--space-2); background: var(--white);
+  border-radius: var(--radius-md); box-shadow: var(--shadow-lift); rotate: -2deg; max-width: 640px;
+}
+.me-story__sketch { display: block; width: 100%; height: auto; border-radius: 12px; }
+.me-story__frame .me-story__note { margin: var(--space-2) 0 var(--space-1); text-align: center; }
+.me-story__badge {
+  position: absolute; right: -28px; bottom: -34px; display: grid; place-items: center; width: 132px; height: 132px;
+  border-radius: 50%; background: var(--white); box-shadow: var(--shadow-lift); rotate: 8deg;
+}
+.me-story__badge img { width: 112px; height: auto; }
+.me-story__spark--a { top: -20px; right: 12%; }
+.me-story__spark--b { bottom: 12px; left: -14px; }
+.me-story__fly--b { top: 4%; left: 58%; }
+@media (max-width: 1023px) {
+  .me-story__grid { grid-template-columns: minmax(0, 1fr); }
+  .me-story__frame { margin: 0 auto; }
+}
+@media (max-width: 760px) {
+  .me-story__frame { padding: var(--space-2) var(--space-2) var(--space-1); }
+  .me-story__badge { width: 88px; height: 88px; right: -8px; bottom: -26px; }
+  .me-story__badge img { width: 74px; }
+}
+.me-story__fly--a { top: auto; bottom: 8%; right: 2%; }
+@media (max-width: 760px) {
+  .me-story__badge { top: -26px; right: -6px; bottom: auto; }
+  .me-story__fly--a { display: none; }
+}
+.me-story__fly--a { top: 3%; bottom: auto; right: -14px; }
+.me-story__fly--a img { width: 112px; }
+@media (max-width: 1360px) { .me-story__fly--a { display: none; } }
