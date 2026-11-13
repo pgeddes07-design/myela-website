@@ -337,3 +337,7 @@ main { overflow-x: clip; }
 .me-story__fly--a { top: 3%; bottom: auto; right: -14px; }
 .me-story__fly--a img { width: 112px; }
 @media (max-width: 1360px) { .me-story__fly--a { display: none; } }
+
+/* Size cards: equal heights side by side */
+.me-section--sizes .me-grid-2 > div { display: flex; }
+.me-section--sizes .me-size { width: 100%; }
