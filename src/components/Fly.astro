@@ -1,0 +1,19 @@
+---
+// Moves its contents as the page scrolls.
+//  mode "pass": offset = (x, y, r) × p, where p runs from +1 (element below the
+//               screen) through 0 (centred) to -1 (above). Things fly in, then on out.
+//  mode "exit": p runs from 0 at the top of the page to -1 after one screen of
+//               scrolling. Used in the hero so cups fly away as you scroll down.
+interface Props {
+  x?: number;
+  y?: number;
+  r?: number;
+  mode?: 'pass' | 'exit';
+  class?: string;
+  style?: string;
+}
+const { x = 0, y = 0, r = 0, mode = 'pass', class: cls, style } = Astro.props;
+---
+<span class={['me-fly', cls].filter(Boolean).join(' ')} style={style} aria-hidden="true">
+  <span class="me-fly__inner" data-fly={mode} data-x={x} data-y={y} data-r={r}><slot /></span>
+</span>

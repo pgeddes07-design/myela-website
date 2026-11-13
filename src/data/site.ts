@@ -11,7 +11,25 @@ import mango from '../assets/cups/mango-200g.webp';
 import mixedBerry from '../assets/cups/mixed-berry-200g.webp';
 import passionFruit from '../assets/cups/passion-fruit-200g.webp';
 import strawberry from '../assets/cups/strawberry-200g.webp';
+import cutCherry from '../assets/cutouts/cherry.webp';
+import cutToffee from '../assets/cutouts/english-toffee.webp';
+import cutForest from '../assets/cutouts/fruits-of-the-forest.webp';
+import cutMango from '../assets/cutouts/mango.webp';
+import cutBerry from '../assets/cutouts/mixed-berry.webp';
+import cutPassion from '../assets/cutouts/passion-fruit.webp';
+import cutStrawberry from '../assets/cutouts/strawberry.webp';
 import type { ImageMetadata } from 'astro';
+
+// Cups cut out of their backgrounds, used for the flying cups.
+export const CUTOUTS = {
+  cherry: cutCherry,
+  englishToffee: cutToffee,
+  fruitsOfTheForest: cutForest,
+  mango: cutMango,
+  mixedBerry: cutBerry,
+  passionFruit: cutPassion,
+  strawberry: cutStrawberry,
+};
 
 // WhatsApp number in international digits: no "+", no leading 0.
 // 072 968 8080 becomes 27729688080.
@@ -58,12 +76,15 @@ export const FLAVOURS: Flavour[] = [
   { name: 'Strawberry', image: strawberry },
 ];
 
-// The three cups shown in the hero: big one in the middle first.
-export const HERO_CUPS = [
-  { image: mixedBerry, alt: 'Mixed Berry Myela frozen yoghurt in a 200g cup' },
-  { image: mango, alt: 'Mango Myela frozen yoghurt in a 200g cup' },
-  { image: strawberry, alt: 'Strawberry Myela frozen yoghurt in a 200g cup' },
-];
+// The story section. Swap in real photos as they arrive.
+export const STORY = {
+  heading: 'Meet Miya & Ella.',
+  paragraphs: [
+    'Myela is a family business. Kate started it with her daughters, Miya and Ella, so the girls could have a business of their own to start, grow and earn their pocket money from.',
+    'So every cup you buy backs two young entrepreneurs. Thank you for being part of it.',
+  ],
+  note: 'Miya + Ella = Myela',
+};
 
 export interface Size {
   grams: 120 | 200;

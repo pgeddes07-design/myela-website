@@ -1,49 +1,59 @@
 ---
 import { Image } from 'astro:assets';
+import logo from '../assets/brand/logo-plum.png';
 import Doodle from './Doodle.astro';
+import FruitSketch from './FruitSketch.astro';
+import Fly from './Fly.astro';
 import Icon from './Icon.astro';
 import WhatsAppButton from './WhatsAppButton.astro';
-import { HERO_CUPS } from '../data/site';
+import { CUTOUTS } from '../data/site';
 
-const spots = ['main', 'left', 'right'];
+// Cups in the hero. x / y / r = how far each flies (px, deg) after one screen of scrolling.
+const cups = [
+  { key: 'left', img: CUTOUTS.mango, alt: 'Mango Myela frozen yoghurt in a 200g cup', x: -40, y: -220, r: 28, delay: 0.25 },
+  { key: 'right', img: CUTOUTS.strawberry, alt: 'Strawberry Myela frozen yoghurt in a 200g cup', x: -260, y: 60, r: -24, delay: 0.35 },
+  { key: 'main', img: CUTOUTS.mixedBerry, alt: 'Mixed Berry Myela frozen yoghurt in a 200g cup', x: 0, y: 220, r: 0, delay: 0.1 },
+  { key: 'tiny-a', img: CUTOUTS.cherry, alt: '', x: -340, y: 320, r: -40, delay: 0.55 },
+  { key: 'tiny-b', img: CUTOUTS.passionFruit, alt: '', x: -60, y: 320, r: 36, delay: 0.65 },
+];
 ---
-<section class="me-hero" id="top" aria-labelledby="hero-title">
-  <div class="me-hero__inner">
-    <div class="me-hero__copy">
-      <p class="me-eyebrow">Myela</p>
-      <h1 class="me-h1" id="hero-title">FROZEN YOGHURT.</h1>
-      <p class="me-hero__tagline">
+<section class="hx" id="top" aria-labelledby="hero-title">
+  <div class="hx__inner">
+    <div class="hx__copy">
+      <Image class="hx__logo" src={logo} alt="Myela frozen yoghurt logo" width={220} height={220} densities={[1, 2]} loading="eager" />
+      <h1 class="me-h1 hx__title" id="hero-title">FROZEN<br />YOGHURT.</h1>
+      <p class="me-hero__tagline hx__tagline">
         Little cups. Big smiles.
-        <Doodle shape="swoosh" tone="white" size={190} class="me-hero__swoosh" />
+        <Doodle shape="swoosh" tone="white" size={190} class="me-hero__swoosh" draw delay={0.9} />
       </p>
-    </div>
-
-    <div class="me-hero__media">
-      <div class="me-hero__stage">
-        {HERO_CUPS.map((c, i) => (
-          <Image
-            class={`me-hero__swirl me-hero__swirl--${spots[i]}`}
-            src={c.image}
-            alt={c.alt}
-            widths={[320, 480, 640, 900]}
-            sizes={i === 0 ? '(max-width: 760px) 60vw, 34vw' : '(max-width: 760px) 42vw, 24vw'}
-            loading="eager"
-            fetchpriority={i === 0 ? 'high' : 'auto'}
-          />
-        ))}
-      </div>
-      <Doodle shape="arrow" tone="white" size={84} rotate={22} label="pick a flavour!" labelPosition="start" class="me-hero__note me-hero__note--top" />
-      <Doodle shape="sparkle" tone="white" size={56} class="me-hero__spark me-hero__spark--a" />
-      <Doodle shape="sparkle" tone="white" size={30} class="me-hero__spark me-hero__spark--b" />
-      <Doodle shape="arrow" tone="white" size={72} rotate={200} label="120g + 200g" labelPosition="end" class="me-hero__note me-hero__note--bottom" />
-    </div>
-
-    <div class="me-hero__actions">
-      <p class="me-hero__body">Fun flavours, ready to enjoy in 120g and 200g cups.</p>
-      <div class="me-hero__buttons">
+      <p class="hx__body">Fun flavours, ready to enjoy in 120g and 200g cups.</p>
+      <div class="me-hero__buttons hx__buttons">
         <a class="me-btn me-btn--primary me-btn--lg" href="#flavours"><span class="me-btn__label">Explore Flavours</span><Icon name="down" /></a>
         <WhatsAppButton variant="secondary" size="lg" />
       </div>
+    </div>
+
+    <div class="hx__stage">
+      <span class="hx__glow" aria-hidden="true"></span>
+
+      {cups.map((c) => (
+        <span class={`hx__cup hx__cup--${c.key}`} style={`--d:${c.delay}s`}>
+          <span class="me-fly__inner" data-fly="exit" data-x={c.x} data-y={c.y} data-r={c.r}>
+            <Image src={c.img} alt={c.alt} widths={c.key.startsWith('tiny') ? [160, 240] : [280, 420, 600]} sizes={c.key === 'main' ? '(max-width: 760px) 46vw, 300px' : c.key.startsWith('tiny') ? '120px' : '(max-width: 760px) 34vw, 220px'} loading="eager" fetchpriority={c.key === 'main' ? 'high' : 'auto'} />
+          </span>
+        </span>
+      ))}
+
+      <Fly mode="exit" x={-180} y={-120} r={-30} class="hx__fruit hx__fruit--a"><FruitSketch fruit="strawberry" size={78} delay={0.6} /></Fly>
+      <Fly mode="exit" x={200} y={-60} r={40} class="hx__fruit hx__fruit--b"><FruitSketch fruit="cherries" size={84} delay={0.8} /></Fly>
+      <Fly mode="exit" x={160} y={160} r={-30} class="hx__fruit hx__fruit--c"><FruitSketch fruit="mango" size={72} delay={1.0} /></Fly>
+      <Fly mode="exit" x={-140} y={200} r={20} class="hx__fruit hx__fruit--d"><FruitSketch fruit="drop" size={48} delay={1.1} /></Fly>
+
+      <Doodle shape="arrow" tone="white" size={84} rotate={22} label="pick a flavour!" labelPosition="start" class="me-hero__note hx__note hx__note--top" draw delay={1.3} />
+      <Doodle shape="arrow" tone="white" size={72} rotate={200} label="120g + 200g" labelPosition="end" class="me-hero__note hx__note hx__note--bottom" draw delay={1.5} />
+      <Doodle shape="sparkle" tone="white" size={44} class="hx__spark hx__spark--a me-twinkle" />
+      <Doodle shape="sparkle" tone="white" size={26} class="hx__spark hx__spark--b me-twinkle" />
+      <Doodle shape="sparkle" tone="white" size={34} class="hx__spark hx__spark--c me-twinkle" />
     </div>
   </div>
 </section>

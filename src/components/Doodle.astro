@@ -8,6 +8,8 @@ interface Props {
   rotate?: number;
   label?: string;
   labelPosition?: 'start' | 'end' | 'above' | 'below';
+  draw?: boolean; // draw itself in when scrolled into view
+  delay?: number;
   class?: string;
 }
 const DOODLES: Record<Shape, { vb: string; d: string[] }> = {
@@ -18,7 +20,7 @@ const DOODLES: Record<Shape, { vb: string; d: string[] }> = {
   swoosh: { vb: '0 0 160 20', d: ['M4 13 C 40 6, 92 4, 156 9', 'M22 17 C 62 12, 104 12, 140 15'] },
   loop: { vb: '0 0 96 48', d: ['M4 40 C 22 40, 32 30, 36 18 C 40 6, 58 6, 56 20 C 54 32, 36 30, 42 18 C 48 8, 70 10, 92 6'] },
 };
-const { shape = 'sparkle', tone = 'white', size = 48, rotate, label, labelPosition = 'end', class: cls } = Astro.props;
+const { shape = 'sparkle', tone = 'white', size = 48, rotate, label, labelPosition = 'end', draw = false, delay = 0, class: cls } = Astro.props;
 const s = DOODLES[shape];
 const [, , vw, vh] = s.vb.split(' ').map(Number);
 const h = Math.round((size * vh) / vw);
@@ -27,8 +29,10 @@ const classes = ['me-doodle', `me-doodle--${tone}`, label && `me-doodle--${label
 ---
 <span class={classes} aria-hidden="true">
   {label && before && <span class="me-doodle__label">{label}</span>}
-  <svg class="me-doodle__mark" viewBox={s.vb} width={size} height={h} focusable="false" style={rotate ? `transform: rotate(${rotate}deg)` : undefined}>
-    {s.d.map((d) => <path d={d} fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" />)}
+  <svg class="me-doodle__mark" viewBox={s.vb} width={size} height={h} focusable="false" data-draw={draw ? '' : undefined} style={`${rotate ? `transform: rotate(${rotate}deg);` : ''}--d:${delay}s`}>
+    {s.d.map((d) => draw
+      ? <path d={d} pathLength="1" fill="none" stroke="currentColor" stroke-width={Math.max(2, (3 * vw) / size).toFixed(2)} stroke-linecap="round" stroke-linejoin="round" />
+      : <path d={d} fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" />)}
   </svg>
   {label && !before && <span class="me-doodle__label">{label}</span>}
 </span>

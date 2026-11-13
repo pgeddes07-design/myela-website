@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { Size } from '../data/site';
+import FruitSketch from './FruitSketch.astro';
 interface Props { size: Size }
 const { size } = Astro.props;
 const tone = size.grams === 120 ? 'mint' : 'lavender';
@@ -11,9 +12,8 @@ const tone = size.grams === 120 ? 'mint' : 'lavender';
       <Image src={size.image} alt={size.imageAlt ?? `${size.grams}g Myela cup`} widths={[300, 450, 600]} sizes="(max-width: 760px) 70vw, 340px" loading="lazy" />
     </div>
   ) : (
-    <div class="me-photo me-photo--slot me-photo--white me-size__slot" role="img" aria-label={`${size.grams}g Myela cup photo coming soon`}>
-      <span class="me-photo__tag">Photo coming soon</span>
-      <span class="me-photo__label">{size.grams}g Myela cup</span>
+    <div class="me-size__sketch" role="img" aria-label={`Sketch of the ${size.grams}g Myela cup with its flat lid`}>
+      <FruitSketch fruit="cup120" tone="plum" size={160} />
     </div>
   )}
   <div class="me-size__body">

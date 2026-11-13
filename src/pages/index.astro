@@ -1,76 +1,109 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import Wave from '../components/Wave.astro';
+import Ticker from '../components/Ticker.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import FlavourCard from '../components/FlavourCard.astro';
 import SizeCard from '../components/SizeCard.astro';
+import Story from '../components/Story.astro';
 import OutletCard from '../components/OutletCard.astro';
 import StockistPanel from '../components/StockistPanel.astro';
 import Faq from '../components/Faq.astro';
 import Footer from '../components/Footer.astro';
 import MobileOrderBar from '../components/MobileOrderBar.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
-import { FLAVOURS, OUTLETS, SIZES } from '../data/site';
+import FruitSketch from '../components/FruitSketch.astro';
+import Fly from '../components/Fly.astro';
+import { CUTOUTS, FLAVOURS, OUTLETS, SIZES } from '../data/site';
 ---
 <Base>
   <Header />
   <main id="main">
     <Hero />
-    <Wave from="lavender" to="white" />
+    <Ticker />
 
-    <section class="me-section me-section--flavours" id="flavours" aria-labelledby="flavours-title">
+    <section class="me-section me-section--flavours me-deco" id="flavours" aria-labelledby="flavours-title">
+      <Fly x={-260} y={40} r={-30} class="me-deco__item me-deco--fl-a"><FruitSketch fruit="strawberry" tone="pink" size={86} /></Fly>
+      <Fly x={220} y={-60} r={30} class="me-deco__item me-deco--fl-b"><FruitSketch fruit="cherries" tone="berry" size={90} /></Fly>
+      <Fly x={320} y={-40} r={28} class="me-deco__item me-deco--fl-c me-deco__cup">
+        <Image src={CUTOUTS.englishToffee} alt="" widths={[200, 300]} sizes="140px" loading="lazy" />
+      </Fly>
       <div class="me-container">
-        <SectionHeader id="flavours-title" title="Find your flavour!" intro="Which one will you choose? Explore the Myela range below." sparkle />
+        <div data-reveal>
+          <SectionHeader id="flavours-title" title="Find your flavour!" intro="Which one will you choose? Explore the Myela range below." sparkle />
+        </div>
         <ul class="me-flavour-grid">
-          {FLAVOURS.map((f) => <li><FlavourCard flavour={f} /></li>)}
+          {FLAVOURS.map((f, i) => <li data-reveal style={`--delay:${(i % 4) * 80}ms`}><FlavourCard flavour={f} /></li>)}
         </ul>
-        <div class="me-center">
+        <div class="me-center" data-reveal>
           <WhatsAppButton variant="secondary" label="Ask what's available" />
         </div>
       </div>
     </section>
 
-    <section class="me-section me-section--sizes" id="sizes" aria-labelledby="sizes-title">
+    <section class="me-section me-section--sizes me-deco" id="sizes" aria-labelledby="sizes-title">
+      <Fly x={-300} y={-60} r={-34} class="me-deco__item me-deco--sz-a me-deco__cup">
+        <Image src={CUTOUTS.passionFruit} alt="" widths={[200, 300]} sizes="150px" loading="lazy" />
+      </Fly>
+      <Fly x={200} y={80} r={24} class="me-deco__item me-deco--sz-b"><FruitSketch fruit="mango" tone="purple" size={84} /></Fly>
+      <Fly x={-120} y={-120} r={-40} class="me-deco__item me-deco--sz-c"><FruitSketch fruit="drop" tone="pink" size={56} /></Fly>
       <div class="me-container">
-        <SectionHeader id="sizes-title" title="Two sizes. Lots of happy." intro="A little treat or a little more? Pick the cup that suits you." />
-        <div class="me-grid-2">
-          {SIZES.map((s) => <SizeCard size={s} />)}
+        <div data-reveal>
+          <SectionHeader id="sizes-title" title="Two sizes. Lots of happy." intro="A little treat or a little more? Pick the cup that suits you." />
         </div>
-        <p class="me-footnote">Buying in bulk or for a tuckshop? Message us for pricing.</p>
-        <div class="me-center me-center--tight">
+        <div class="me-grid-2">
+          {SIZES.map((s, i) => <div data-reveal={i === 0 ? 'left' : 'right'}><SizeCard size={s} /></div>)}
+        </div>
+        <p class="me-footnote" data-reveal>Buying in bulk or for a tuckshop? Message us for pricing.</p>
+        <div class="me-center me-center--tight" data-reveal>
           <WhatsAppButton variant="secondary" label="Check availability" />
         </div>
       </div>
     </section>
 
-    <section class="me-section me-section--blush" id="find-us" aria-labelledby="find-title">
+    <Story />
+
+    <section class="me-section me-section--blush me-deco" id="find-us" aria-labelledby="find-title">
+      <Fly x={240} y={-40} r={30} class="me-deco__item me-deco--fi-a"><FruitSketch fruit="passion" tone="berry" size={80} /></Fly>
+      <Fly x={-200} y={60} r={-24} class="me-deco__item me-deco--fi-b"><FruitSketch fruit="leaf" tone="purple" size={76} /></Fly>
       <div class="me-container">
-        <SectionHeader id="find-title" title="Where to find Myela" intro="Myela comes to you through selected outlets and events. We don't have our own shop." />
-        <div class="me-grid-3">
-          {OUTLETS.map((o) => <OutletCard {...o} />)}
+        <div data-reveal>
+          <SectionHeader id="find-title" title="Where to find Myela" intro="Myela comes to you through selected outlets and events. We don't have our own shop." />
         </div>
-        <p class="me-footnote">Availability varies by outlet and event. Please message us to confirm.</p>
-        <div class="me-center me-center--tight">
+        <div class="me-grid-3">
+          {OUTLETS.map((o, i) => <div data-reveal style={`--delay:${i * 100}ms`}><OutletCard {...o} /></div>)}
+        </div>
+        <p class="me-footnote" data-reveal>Availability varies by outlet and event. Please message us to confirm.</p>
+        <div class="me-center me-center--tight" data-reveal>
           <WhatsAppButton variant="secondary" label="Ask about availability" />
         </div>
       </div>
     </section>
 
-    <section class="me-section" aria-label="Stock Myela">
-      <div class="me-container">
+    <section class="me-section me-deco" aria-label="Stock Myela">
+      <Fly x={320} y={-80} r={30} class="me-deco__item me-deco--st-a me-deco__cup">
+        <Image src={CUTOUTS.fruitsOfTheForest} alt="" widths={[200, 300]} sizes="150px" loading="lazy" />
+      </Fly>
+      <div class="me-container" data-reveal="pop">
         <StockistPanel />
       </div>
     </section>
 
-    <section class="me-section me-section--blush" id="order" aria-labelledby="order-title">
+    <section class="me-section me-section--blush me-deco" id="order" aria-labelledby="order-title">
+      <Fly x={-260} y={-40} r={-30} class="me-deco__item me-deco--or-a me-deco__cup">
+        <Image src={CUTOUTS.strawberry} alt="" widths={[200, 300]} sizes="150px" loading="lazy" />
+      </Fly>
+      <Fly x={180} y={60} r={30} class="me-deco__item me-deco--or-b"><FruitSketch fruit="cherries" tone="pink" size={80} /></Fly>
       <div class="me-container">
-        <SectionHeader id="order-title" title="Fancy some Myela?" intro="Send us a WhatsApp to check available flavours, sizes and how to order." />
-        <div class="me-center me-center--order">
+        <div data-reveal>
+          <SectionHeader id="order-title" title="Fancy some Myela?" intro="Send us a WhatsApp to check available flavours, sizes and how to order." />
+        </div>
+        <div class="me-center me-center--order" data-reveal="pop">
           <WhatsAppButton size="lg" />
         </div>
-        <Faq />
+        <div data-reveal><Faq /></div>
       </div>
     </section>
   </main>

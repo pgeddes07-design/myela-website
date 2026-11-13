@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/logo-plum.png';
+import FruitSketch from './FruitSketch.astro';
+import Fly from './Fly.astro';
+import Doodle from './Doodle.astro';
+import { CUTOUTS, STORY } from '../data/site';
+---
+<section class="me-section me-story" id="story" aria-labelledby="story-title">
+  <Fly x={-220} y={0} r={-25} class="me-story__fly me-story__fly--a">
+    <Image src={CUTOUTS.cherry} alt="" widths={[200, 300]} sizes="150px" loading="lazy" />
+  </Fly>
+  <Fly x={0} y={-160} r={20} class="me-story__fly me-story__fly--b"><FruitSketch fruit="raspberry" tone="white" size={84} /></Fly>
+  <Fly x={120} y={-80} r={-20} class="me-story__fly me-story__fly--c"><FruitSketch fruit="litchi" tone="white" size={76} /></Fly>
+
+  <div class="me-container me-story__grid">
+    <div class="me-story__art" data-reveal="pop">
+      <div class="me-story__card">
+        <Image class="me-story__logo" src={logo} alt="Myela frozen yoghurt logo" width={340} height={340} densities={[1, 2]} loading="lazy" />
+        {STORY.note && <p class="me-story__note" aria-hidden="true">{STORY.note}</p>}
+      </div>
+      <Doodle shape="sparkle" tone="white" size={40} class="me-story__spark me-story__spark--a me-twinkle" />
+      <Doodle shape="sparkle" tone="white" size={28} class="me-story__spark me-story__spark--b me-twinkle" />
+    </div>
+
+    <div class="me-story__copy" data-reveal>
+      <p class="me-eyebrow">Our story</p>
+      <h2 class="me-h2" id="story-title">{STORY.heading}</h2>
+      <Doodle shape="swoosh" tone="white" size={220} class="me-story__swoosh" draw />
+      {STORY.paragraphs.map((p) => <p class="me-story__p">{p}</p>)}
+    </div>
+  </div>
+</section>
