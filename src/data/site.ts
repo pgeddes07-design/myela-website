@@ -68,22 +68,26 @@ export const SITE = {
 export interface Flavour {
   name: string;
   image: ImageMetadata;
-  /** Yoghurt colour for the pour animation. */
+  /** Screen colour (hex), used by the pour animation. */
   colour: string;
+  /** Print colour from the Myela colour library (C/M/Y/K). Approximate until proofed. */
+  cmyk?: string;
   /** Leave empty until confirmed per flavour. The button under the grid covers availability. */
   sizes?: string[];
 }
 
 // Order here is the order on the page.
+// Colour library: flavours with a cmyk value are confirmed from Myela's own library.
+// The rest are still picked from the product photos. Update them here as the library grows.
 export const FLAVOURS: Flavour[] = [
-  { name: 'Cherry', image: cherry, colour: '#e92440' },
+  { name: 'Cherry', image: cherry, colour: '#e2435c', cmyk: '0/82/64/4' },
   { name: 'English Toffee', image: englishToffee, colour: '#e6b07a' },
   { name: 'Fruits of the Forest', image: fruitsOfTheForest, colour: '#ed286a' },
   { name: 'Litchi', image: litchi, colour: '#f7eacb' },
   { name: 'Mango', image: mango, colour: '#fe890c' },
   { name: 'Mixed Berry', image: mixedBerry, colour: '#c64c82' },
   { name: 'Passion Fruit', image: passionFruit, colour: '#feb432' },
-  { name: 'Strawberry', image: strawberry, colour: '#f59aa5' },
+  { name: 'Strawberry', image: strawberry, colour: '#e9a89f', cmyk: '0/33/36/4' },
 ];
 
 // The story section. Swap in real photos as they arrive.
