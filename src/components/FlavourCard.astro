@@ -9,7 +9,7 @@ const { flavour } = Astro.props;
     <Image
       class="me-photo"
       src={flavour.image}
-      alt={`${flavour.name} Myela frozen yoghurt in a cup`}
+      alt={`${flavour.name} Myela frozen yoghurt in a 200g cup`}
       widths={[240, 360, 480, 640]}
       sizes="(max-width: 1023px) 46vw, 280px"
       loading="lazy"
@@ -19,8 +19,6 @@ const { flavour } = Astro.props;
     <h3 class="me-flavour__name">{flavour.name}</h3>
     {flavour.sizes?.length ? (
       <ul class="me-chips" aria-label="Cup sizes">{flavour.sizes.map((s) => <li class="me-chip">{s}</li>)}</ul>
-    ) : (
-      <p class="me-flavour__ask">Ask about availability</p>
-    )}
+    ) : null}
   </div>
 </article>

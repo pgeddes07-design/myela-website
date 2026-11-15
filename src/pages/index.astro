@@ -24,6 +24,7 @@ import { CUTOUTS, FLAVOURS, OUTLETS, SIZES } from '../data/site';
   <main id="main">
     <Hero />
     <Ticker />
+    <Story />
 
     <section class="me-section me-section--flavours me-deco" id="flavours" aria-labelledby="flavours-title">
       <Fly x={-260} y={40} r={-30} class="me-deco__item me-deco--fl-a"><FruitSketch fruit="strawberry" tone="pink" size={86} /></Fly>
@@ -36,12 +37,12 @@ import { CUTOUTS, FLAVOURS, OUTLETS, SIZES } from '../data/site';
           <SectionHeader id="flavours-title" title="Find your flavour!" intro="Which one will you choose? Explore the Myela range below." sparkle />
         </div>
         <div data-reveal="pop"><PourStage /></div>
-        <p class="me-flavour-intro" data-reveal>And here's the real thing, sealed in its cup:</p>
+        <p class="me-flavour-intro" data-reveal>And here's the real thing, sealed in our 200g cups:</p>
         <ul class="me-flavour-grid">
           {FLAVOURS.map((f, i) => <li data-reveal style={`--delay:${(i % 4) * 80}ms`}><FlavourCard flavour={f} /></li>)}
         </ul>
         <div class="me-center" data-reveal>
-          <WhatsAppButton variant="secondary" label="Ask what's available" />
+          <WhatsAppButton variant="secondary" label="Ask about availability" />
         </div>
       </div>
     </section>
@@ -65,8 +66,6 @@ import { CUTOUTS, FLAVOURS, OUTLETS, SIZES } from '../data/site';
         </div>
       </div>
     </section>
-
-    <Story />
 
     <section class="me-section me-section--blush me-deco" id="find-us" aria-labelledby="find-title">
       <Fly x={240} y={-40} r={30} class="me-deco__item me-deco--fi-a"><FruitSketch fruit="passion" tone="berry" size={80} /></Fly>

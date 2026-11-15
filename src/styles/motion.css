@@ -59,7 +59,7 @@ main { overflow-x: clip; }
   font: 700 1.75rem/1 var(--font-display); text-transform: uppercase; letter-spacing: 0.02em; white-space: nowrap;
 }
 .me-ticker__item svg { fill: var(--berry); flex: none; }
-.me-section--flavours { padding-top: calc(var(--section-desktop) - 8px); }
+.me-story { padding-top: calc(var(--section-desktop) - 8px); }
 
 /* ---------- Fruit sketches ---------- */
 .me-sketch { display: block; overflow: visible; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
@@ -88,7 +88,7 @@ main { overflow-x: clip; }
 .me-deco--or-b { top: 64px; right: 8%; }
 
 /* ---------- Story ---------- */
-.me-story { position: relative; background: var(--lavender); color: var(--ink); }
+.me-story { position: relative; background: var(--blush); color: var(--ink); }
 .me-story__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--space-16); align-items: center; position: relative; z-index: 1; }
 .me-story__art { position: relative; display: flex; justify-content: center; }
 .me-story__card {
@@ -151,7 +151,7 @@ main { overflow-x: clip; }
   .me-ticker { margin-top: -36px; padding: var(--space-3) 0; }
   .me-ticker__item { font-size: 1.25rem; gap: var(--space-3); padding-right: var(--space-3); }
   .me-ticker__item svg { width: 16px; height: 16px; }
-  .me-section--flavours { padding-top: var(--section-mobile); }
+  .me-story { padding-top: var(--section-mobile); }
 
   .me-deco__item { display: none; }
   .me-deco--fl-b, .me-deco--sz-b, .me-deco--or-b, .me-deco--fi-a { display: block; }

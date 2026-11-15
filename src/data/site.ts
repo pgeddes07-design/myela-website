@@ -70,7 +70,7 @@ export interface Flavour {
   image: ImageMetadata;
   /** Yoghurt colour for the pour animation. */
   colour: string;
-  /** Leave empty until confirmed per flavour. Shows "Ask about availability" instead. */
+  /** Leave empty until confirmed per flavour. The button under the grid covers availability. */
   sizes?: string[];
 }
 
@@ -153,7 +153,7 @@ export const FAQS = [
   },
   {
     q: 'Which areas do you cover?',
-    a: "We're based in Randpark Ridge, Johannesburg, and supply Randburg, Fourways, Sandton and the West Rand. A bit further out? Message us and we'll see what we can do.",
+    a: "We're based in Randpark Ridge, Johannesburg, and supply Randburg, Fourways, Sandton and the West Rand. If you're not too far away, some customers send an Uber courier to collect. A bit further out? Message us and we'll see what we can do.",
   },
   {
     q: 'Can my business stock Myela?',

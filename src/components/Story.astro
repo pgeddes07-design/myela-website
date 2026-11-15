@@ -11,8 +11,8 @@ import { CUTOUTS, STORY } from '../data/site';
   <Fly x={-220} y={0} r={-25} class="me-story__fly me-story__fly--a">
     <Image src={CUTOUTS.cherry} alt="" widths={[200, 300]} sizes="150px" loading="lazy" />
   </Fly>
-  <Fly x={0} y={-160} r={20} class="me-story__fly me-story__fly--b"><FruitSketch fruit="raspberry" tone="white" size={84} /></Fly>
-  <Fly x={120} y={-80} r={-20} class="me-story__fly me-story__fly--c"><FruitSketch fruit="litchi" tone="white" size={76} /></Fly>
+  <Fly x={0} y={-160} r={20} class="me-story__fly me-story__fly--b"><FruitSketch fruit="raspberry" tone="pink" size={84} /></Fly>
+  <Fly x={120} y={-80} r={-20} class="me-story__fly me-story__fly--c"><FruitSketch fruit="litchi" tone="purple" size={76} /></Fly>
 
   <div class="me-container me-story__grid">
     <div class="me-story__art" data-reveal="pop">
@@ -21,14 +21,14 @@ import { CUTOUTS, STORY } from '../data/site';
         {STORY.note && <figcaption class="me-story__note">{STORY.note}</figcaption>}
         <span class="me-story__badge"><Image src={logo} alt="" width={120} height={120} densities={[1, 2]} loading="lazy" /></span>
       </figure>
-      <Doodle shape="sparkle" tone="white" size={40} class="me-story__spark me-story__spark--a me-twinkle" />
-      <Doodle shape="sparkle" tone="white" size={28} class="me-story__spark me-story__spark--b me-twinkle" />
+      <Doodle shape="sparkle" tone="pink" size={40} class="me-story__spark me-story__spark--a me-twinkle" />
+      <Doodle shape="sparkle" tone="pink" size={28} class="me-story__spark me-story__spark--b me-twinkle" />
     </div>
 
     <div class="me-story__copy" data-reveal>
       <p class="me-eyebrow">Our story</p>
       <h2 class="me-h2" id="story-title">{STORY.heading}</h2>
-      <Doodle shape="swoosh" tone="white" size={220} class="me-story__swoosh" draw />
+      <Doodle shape="swoosh" tone="pink" size={220} class="me-story__swoosh" draw />
       {STORY.paragraphs.map((p) => <p class="me-story__p">{p}</p>)}
     </div>
   </div>
