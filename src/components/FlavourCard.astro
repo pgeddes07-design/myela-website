@@ -1,10 +1,12 @@
 ---
 import { Image } from 'astro:assets';
-import type { Flavour } from '../data/site';
+import Icon from './Icon.astro';
+import { flavourMessage, whatsappLink, type Flavour } from '../data/site';
 interface Props { flavour: Flavour }
 const { flavour } = Astro.props;
+const href = whatsappLink(flavourMessage(flavour.name));
 ---
-<article class="me-flavour">
+<article class="me-flavour" style={`--tint:${flavour.colour}`}>
   <div class="me-flavour__media">
     <Image
       class="me-photo"
@@ -17,6 +19,11 @@ const { flavour } = Astro.props;
   </div>
   <div class="me-flavour__body">
     <h3 class="me-flavour__name">{flavour.name}</h3>
+    {href && (
+      <a class="me-flavour__order" href={href} target="_blank" rel="noopener noreferrer" aria-label={`Order ${flavour.name} (opens WhatsApp)`}>
+        <Icon name="chat" /><span>Order</span>
+      </a>
+    )}
     {flavour.sizes?.length ? (
       <ul class="me-chips" aria-label="Cup sizes">{flavour.sizes.map((s) => <li class="me-chip">{s}</li>)}</ul>
     ) : null}

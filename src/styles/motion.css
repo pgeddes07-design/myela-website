@@ -350,3 +350,75 @@ main { overflow-x: clip; }
 }
 .me-footer__brand p.me-footer__area { margin-top: var(--space-3); max-width: 34ch; font: 400 0.9375rem/1.5 var(--font-body); opacity: 0.85; }
 .me-footer a.me-btn { border-radius: var(--radius-pill); min-height: 48px; padding: 0 var(--space-6); }
+
+/* ================= v3: review pass ================= */
+
+/* Labels in the brand's own voice instead of tracked-out capitals */
+.me-eyebrow { margin: 0 0 var(--space-1); font: 600 1.875rem/1 var(--font-hand); letter-spacing: 0; text-transform: none; color: var(--berry); }
+.me-tag { font: 700 0.8125rem/1 var(--font-body); letter-spacing: 0; text-transform: none; }
+
+/* Story: order button, and the raspberry moved clear of the heading */
+.me-story__cta { margin-top: var(--space-8); }
+.me-story__fly--b { top: auto; bottom: 7%; left: auto; right: 7%; }
+/* "Miya + Ella = Myela" writes itself in once the picture has landed */
+.motion .me-story__art .me-story__note { clip-path: inset(-20% 100% -20% 0); transition: clip-path 1.3s cubic-bezier(0.5, 0, 0.3, 1) 0.6s; }
+.motion .me-story__art.is-in .me-story__note { clip-path: inset(-20% 0 -20% 0); }
+
+/* Flavour cards: each in its own colour, each one orders that flavour */
+.me-flavour { position: relative; }
+.me-flavour__media { background: color-mix(in srgb, var(--tint, #f34691) 20%, #fff); transition: background-color 0.3s ease; }
+.me-flavour:hover .me-flavour__media, .me-flavour:focus-within .me-flavour__media { background: color-mix(in srgb, var(--tint, #f34691) 36%, #fff); }
+.me-flavour__media .me-photo { transition: scale 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.me-flavour:hover .me-photo { scale: 1.06; }
+.me-flavour__body { flex-wrap: wrap; justify-content: space-between; }
+.me-flavour__name { flex: 1 1 100%; }
+.me-flavour__order {
+  flex: none; display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 14px; border-radius: var(--radius-pill);
+  background: var(--blush); color: var(--berry); font: 800 0.875rem/1 var(--font-body); text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.me-flavour__order .me-icon { width: 16px; height: 16px; }
+.me-flavour__order::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius-lg); }
+.me-flavour:hover .me-flavour__order { background: var(--berry); color: var(--white); }
+.me-flavour__order:focus-visible { outline: none; }
+.me-flavour:has(.me-flavour__order:focus-visible) { box-shadow: var(--shadow-focus); }
+
+/* How ordering works: three steps joined by a line that draws itself */
+.me-steps { position: relative; max-width: 980px; margin: 0 auto var(--space-12); }
+.me-steps__line { position: absolute; top: 2px; left: 16%; width: 68%; height: 60px; overflow: visible; }
+.me-steps__line path { fill: none; stroke: var(--lavender); stroke-width: 3; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.motion .me-steps[data-draw] .me-steps__line path { transition-duration: 1.6s; transition-delay: 0.3s; }
+.me-steps__list { position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-8); }
+.me-step { display: flex; flex-direction: column; align-items: center; gap: var(--space-4); text-align: center; }
+.me-step__num { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; font: 700 2rem/1 var(--font-display); color: var(--plum); box-shadow: 0 0 0 8px var(--blush); }
+.me-step__num--1 { background: var(--mint); rotate: -6deg; }
+.me-step__num--2 { background: var(--lavender); rotate: 4deg; }
+.me-step__num--3 { background: var(--pink); color: var(--white); rotate: -3deg; }
+.me-step__title { margin: 0 0 var(--space-2); font: 600 1.5rem/1.2 var(--font-display); }
+.me-step__body { margin: 0 auto; max-width: 28ch; font: 400 1rem/1.6 var(--font-body); }
+.me-center--order { margin-bottom: var(--space-16); }
+
+/* FAQ answers ease open instead of snapping */
+@supports (interpolate-size: allow-keywords) {
+  .me-faq__item { interpolate-size: allow-keywords; }
+  .me-faq__item::details-content { block-size: 0; overflow: clip; transition: block-size 0.35s ease, content-visibility 0.35s allow-discrete; }
+  .me-faq__item[open]::details-content { block-size: auto; }
+}
+
+@media (max-width: 760px) {
+  /* Sketches that crossed the headings on phones */
+  .me-deco--fl-b, .me-deco--fi-a, .me-deco--or-b { display: none; }
+  .me-eyebrow { font-size: 1.625rem; }
+  .me-story__cta .me-btn { width: 100%; }
+  .me-flavour__order { min-height: 32px; padding: 0 12px; }
+  .me-steps { margin-bottom: var(--space-8); }
+  .me-steps__line { display: none; }
+  .me-steps__list { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); }
+  .me-step { flex-direction: row; align-items: flex-start; text-align: left; }
+  .me-step__num { flex: none; width: 52px; height: 52px; font-size: 1.625rem; box-shadow: none; }
+  .me-step__body { margin: 0; max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .me-flavour__media, .me-flavour__media .me-photo, .me-flavour__order, .me-faq__item::details-content { transition: none; }
+  .me-flavour:hover .me-photo { scale: 1; }
+}

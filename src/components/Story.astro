@@ -4,6 +4,7 @@ import logo from '../assets/brand/logo-plum.png';
 import FruitSketch from './FruitSketch.astro';
 import Fly from './Fly.astro';
 import Doodle from './Doodle.astro';
+import WhatsAppButton from './WhatsAppButton.astro';
 import sketch from '../assets/story/miya-ella-sketch.webp';
 import { CUTOUTS, STORY } from '../data/site';
 ---
@@ -30,6 +31,7 @@ import { CUTOUTS, STORY } from '../data/site';
       <h2 class="me-h2" id="story-title">{STORY.heading}</h2>
       <Doodle shape="swoosh" tone="pink" size={220} class="me-story__swoosh" draw />
       {STORY.paragraphs.map((p) => <p class="me-story__p">{p}</p>)}
+      <div class="me-story__cta"><WhatsAppButton size="lg" label="Order a cup, back the girls" /></div>
     </div>
   </div>
 </section>

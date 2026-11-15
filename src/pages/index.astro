@@ -11,6 +11,7 @@ import Story from '../components/Story.astro';
 import OutletCard from '../components/OutletCard.astro';
 import StockistPanel from '../components/StockistPanel.astro';
 import Faq from '../components/Faq.astro';
+import Steps from '../components/Steps.astro';
 import Footer from '../components/Footer.astro';
 import MobileOrderBar from '../components/MobileOrderBar.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
@@ -37,7 +38,7 @@ import { CUTOUTS, FLAVOURS, OUTLETS, SIZES } from '../data/site';
           <SectionHeader id="flavours-title" title="Find your flavour!" intro="Which one will you choose? Explore the Myela range below." sparkle />
         </div>
         <div data-reveal="pop"><PourStage /></div>
-        <p class="me-flavour-intro" data-reveal>And here's the real thing, sealed in our 200g cups:</p>
+        <p class="me-flavour-intro" data-reveal>And here's the real thing, sealed in our 200g cups. Tap one to order it:</p>
         <ul class="me-flavour-grid">
           {FLAVOURS.map((f, i) => <li data-reveal style={`--delay:${(i % 4) * 80}ms`}><FlavourCard flavour={f} /></li>)}
         </ul>
@@ -100,8 +101,9 @@ import { CUTOUTS, FLAVOURS, OUTLETS, SIZES } from '../data/site';
       <Fly x={180} y={60} r={30} class="me-deco__item me-deco--or-b"><FruitSketch fruit="cherries" tone="pink" size={80} /></Fly>
       <div class="me-container">
         <div data-reveal>
-          <SectionHeader id="order-title" title="Fancy some Myela?" intro="Send us a WhatsApp to check available flavours, sizes and how to order." />
+          <SectionHeader id="order-title" title="Fancy some Myela?" intro="Ordering takes one WhatsApp. Here's how it works." />
         </div>
+        <Steps />
         <div class="me-center me-center--order" data-reveal="pop">
           <WhatsAppButton size="lg" />
         </div>

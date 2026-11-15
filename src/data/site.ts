@@ -145,6 +145,13 @@ export const OUTLETS = [
   },
 ];
 
+// How ordering works, shown as three steps above the FAQ.
+export const HOW_TO_ORDER = [
+  { title: 'Say hi on WhatsApp', body: "Tell us which flavours and cup sizes you're after." },
+  { title: "We check the freezer", body: "We'll confirm what's available and what it comes to." },
+  { title: 'Collect, or send an Uber', body: "Pick up from us in Randpark Ridge, or send an Uber courier if you're not too far." },
+];
+
 export const FAQS = [
   { q: 'Which sizes do you offer?', a: 'Myela frozen yoghurt comes in 120g and 200g cups.' },
   {
