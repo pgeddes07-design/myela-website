@@ -11,6 +11,7 @@ import mango from '../assets/cups/mango-200g.webp';
 import mixedBerry from '../assets/cups/mixed-berry-200g.webp';
 import passionFruit from '../assets/cups/passion-fruit-200g.webp';
 import strawberry from '../assets/cups/strawberry-200g.webp';
+import strawberry120 from '../assets/cups/strawberry-120g.webp';
 import cutCherry from '../assets/cutouts/cherry.webp';
 import cutToffee from '../assets/cutouts/english-toffee.webp';
 import cutForest from '../assets/cutouts/fruits-of-the-forest.webp';
@@ -111,7 +112,8 @@ export const SIZES: Size[] = [
     price: 'R25',
     body: 'Our tuckshop size. Just right for break time, or that sneaky, slightly healthier something sweet after supper.',
     note: 'The tuckshop favourite',
-    // image: cup120, imageAlt: '120g Myela cup with a flat lid',
+    image: strawberry120,
+    imageAlt: 'Strawberry Myela frozen yoghurt in a 120g cup with a flat lid',
   },
   {
     grams: 200,
