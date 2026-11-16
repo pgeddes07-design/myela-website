@@ -6,6 +6,7 @@ import FruitSketch from './FruitSketch.astro';
 import Fly from './Fly.astro';
 import Icon from './Icon.astro';
 import WhatsAppButton from './WhatsAppButton.astro';
+import StoryStamp from './StoryStamp.astro';
 import { CUTOUTS } from '../data/site';
 
 // Cups in the hero. x / y / r = how far each flies (px, deg) after one screen of scrolling.
@@ -20,6 +21,7 @@ const cups = [
 <section class="hx" id="top" aria-labelledby="hero-title">
   <div class="hx__inner">
     <div class="hx__copy">
+      <StoryStamp class="hx__stamp" />
       <Image class="hx__logo" src={logo} alt="Myela frozen yoghurt logo" width={220} height={220} densities={[1, 2]} loading="eager" />
       <h1 class="me-h1 hx__title" id="hero-title">FROZEN<br />YOGHURT.</h1>
       <p class="me-hero__tagline hx__tagline">

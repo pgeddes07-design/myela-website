@@ -114,8 +114,8 @@ export const SIZES: Size[] = [
   {
     grams: 120,
     price: 'R25',
-    body: 'A perfectly sized frozen-yoghurt treat. Our 120g cups are supplied to participating school tuckshops.',
-    note: 'In participating tuckshops',
+    body: 'A perfectly sized frozen-yoghurt treat, just right for lunchboxes. Order straight from us on WhatsApp.',
+    note: 'Also in participating school tuckshops',
     // image: cup120, imageAlt: '120g Myela cup with a flat lid',
   },
   {
@@ -136,7 +136,7 @@ export const OUTLETS = [
   {
     label: 'School tuckshops',
     title: 'Primary-school tuckshops',
-    body: 'Look out for 120g Myela cups at participating primary-school tuckshops.',
+    body: 'Look out for 120g Myela cups at participating primary-school tuckshops. You can also order them straight from us.',
   },
   {
     label: 'School events',

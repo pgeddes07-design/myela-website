@@ -30,9 +30,6 @@ import { CUTOUTS, FLAVOURS, OUTLETS, SIZES } from '../data/site';
     <section class="me-section me-section--flavours me-deco" id="flavours" aria-labelledby="flavours-title">
       <Fly x={-260} y={40} r={-30} class="me-deco__item me-deco--fl-a"><FruitSketch fruit="strawberry" tone="pink" size={86} /></Fly>
       <Fly x={220} y={-60} r={30} class="me-deco__item me-deco--fl-b"><FruitSketch fruit="cherries" tone="berry" size={90} /></Fly>
-      <Fly x={320} y={-40} r={28} class="me-deco__item me-deco--fl-c me-deco__cup">
-        <Image src={CUTOUTS.englishToffee} alt="" widths={[200, 300]} sizes="140px" loading="lazy" />
-      </Fly>
       <div class="me-container">
         <div data-reveal>
           <SectionHeader id="flavours-title" title="Find your flavour!" intro="Which one will you choose? Explore the Myela range below." sparkle />
@@ -49,9 +46,6 @@ import { CUTOUTS, FLAVOURS, OUTLETS, SIZES } from '../data/site';
     </section>
 
     <section class="me-section me-section--sizes me-deco" id="sizes" aria-labelledby="sizes-title">
-      <Fly x={-300} y={-60} r={-34} class="me-deco__item me-deco--sz-a me-deco__cup">
-        <Image src={CUTOUTS.passionFruit} alt="" widths={[200, 300]} sizes="150px" loading="lazy" />
-      </Fly>
       <Fly x={200} y={80} r={24} class="me-deco__item me-deco--sz-b"><FruitSketch fruit="mango" tone="purple" size={84} /></Fly>
       <Fly x={-120} y={-120} r={-40} class="me-deco__item me-deco--sz-c"><FruitSketch fruit="drop" tone="pink" size={56} /></Fly>
       <div class="me-container">

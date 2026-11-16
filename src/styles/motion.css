@@ -422,3 +422,42 @@ main { overflow-x: clip; }
   .me-flavour__media, .me-flavour__media .me-photo, .me-flavour__order, .me-faq__item::details-content { transition: none; }
   .me-flavour:hover .me-photo { scale: 1; }
 }
+
+/* ================= v4 ================= */
+
+/* Header links: a touch bigger */
+.me-header__nav a { font-size: 1.125rem; }
+@media (max-width: 1180px) { .me-header__nav a { font-size: 1rem; } }
+
+/* Hero sticker: the girls, with a slowly turning ring of words. Sits in the space beside the logo. */
+.me-stamp {
+  position: absolute; z-index: 5; top: 6px; left: 250px; display: grid; place-items: center;
+  width: 168px; height: 168px; border-radius: 50%; background: var(--white); color: var(--plum); text-decoration: none;
+  box-shadow: 0 14px 30px rgba(53, 33, 71, 0.22); rotate: 8deg; transition: scale 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.me-stamp__ring { position: absolute; inset: 0; width: 100%; height: 100%; }
+.me-stamp__ring text { font: 600 17px var(--font-display); fill: var(--berry); }
+.me-stamp__face { display: block; width: 104px; height: 104px; overflow: hidden; border-radius: 50%; box-shadow: 0 0 0 3px var(--lavender); }
+.me-stamp__face img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.me-stamp:hover { scale: 1.06; }
+.me-stamp:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+.motion .me-stamp__ring { animation: me-spin 24s linear infinite; }
+.motion .me-stamp:hover .me-stamp__ring { animation-play-state: paused; }
+.motion .me-stamp { animation: me-stamp-in 0.9s cubic-bezier(0.3, 1.5, 0.5, 1) 1.2s both; }
+@keyframes me-spin { to { rotate: 360deg; } }
+@keyframes me-stamp-in { from { opacity: 0; scale: 0.3; rotate: -60deg; } }
+@media (max-width: 1023px) {
+  .me-stamp { left: 180px; width: 136px; height: 136px; }
+  .me-stamp__face { width: 84px; height: 84px; }
+  .me-stamp__ring text { font-size: 18px; }
+}
+@media (max-width: 760px) {
+  .hx__inner { position: relative; }
+  .me-stamp { top: 14px; left: auto; right: var(--gutter-mobile); width: 116px; height: 116px; }
+  .me-stamp__face { width: 70px; height: 70px; }
+}
+@media (min-width: 1280px) {
+  .me-stamp { left: 290px; width: 196px; height: 196px; }
+  .me-stamp__face { width: 124px; height: 124px; }
+}
+@media (prefers-reduced-motion: reduce) { .me-stamp { transition: none; } }

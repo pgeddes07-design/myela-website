@@ -1,0 +1,17 @@
+---
+// Round sticker in the hero: the girls in the middle, a slowly turning ring of text around them.
+// Links down to the story.
+import { Image } from 'astro:assets';
+import faces from '../assets/story/miya-ella-faces.webp';
+interface Props { class?: string }
+const { class: cls } = Astro.props;
+---
+<a class={['me-stamp', cls].filter(Boolean).join(' ')} href="#story" aria-label="Made by Miya and Ella. Read our story.">
+  <svg class="me-stamp__ring" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+    <defs><path id="me-stamp-path" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0" /></defs>
+    <text><textPath href="#me-stamp-path" textLength="500" lengthAdjust="spacing">made by Miya &amp; Ella ✦ read our story ✦</textPath></text>
+  </svg>
+  <span class="me-stamp__face">
+    <Image src={faces} alt="" widths={[160, 240, 320]} sizes="120px" loading="eager" />
+  </span>
+</a>
