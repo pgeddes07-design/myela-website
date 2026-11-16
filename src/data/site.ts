@@ -114,7 +114,7 @@ export const SIZES: Size[] = [
   {
     grams: 120,
     price: 'R25',
-    body: 'A perfectly sized frozen-yoghurt treat, just right for lunchboxes. Order straight from us on WhatsApp.',
+    body: 'A perfectly sized frozen-yoghurt treat for that sneaky, slightly healthier something sweet after supper. Order straight from us on WhatsApp.',
     note: 'Also in participating school tuckshops',
     // image: cup120, imageAlt: '120g Myela cup with a flat lid',
   },
