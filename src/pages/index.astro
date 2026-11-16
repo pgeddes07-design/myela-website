@@ -16,6 +16,7 @@ import FruitSketch from '../components/FruitSketch.astro';
 import Fly from '../components/Fly.astro';
 import PourStage from '../components/PourStage.astro';
 import { CUTOUTS, FLAVOURS, OUTLETS, SIZES } from '../data/site';
+import garden from '../assets/lifestyle/strawberry-garden.webp';
 ---
 <Base>
   <Header />
@@ -77,15 +78,17 @@ import { CUTOUTS, FLAVOURS, OUTLETS, SIZES } from '../data/site';
 
 
     <section class="me-section me-section--blush me-deco" id="order" aria-labelledby="order-title">
-      <Fly x={-260} y={-40} r={-30} class="me-deco__item me-deco--or-a me-deco__cup">
-        <Image src={CUTOUTS.strawberry} alt="" widths={[200, 300]} sizes="150px" loading="lazy" />
-      </Fly>
       <Fly x={180} y={60} r={30} class="me-deco__item me-deco--or-b"><FruitSketch fruit="cherries" tone="pink" size={80} /></Fly>
       <div class="me-container">
         <div data-reveal>
           <SectionHeader id="order-title" title="Good to know" intro="Anything else? The WhatsApp button at the top goes straight to us." />
         </div>
-        <div data-reveal><Faq /></div>
+        <div class="me-know">
+          <figure class="me-know__photo" data-reveal="left">
+            <Image src={garden} alt="Someone enjoying a strawberry frozen yoghurt in the garden" widths={[400, 600, 800, 1024]} sizes="(max-width: 760px) 92vw, 420px" loading="lazy" />
+          </figure>
+          <div class="me-know__faq" data-reveal="right"><Faq /></div>
+        </div>
       </div>
     </section>
   </main>

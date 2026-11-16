@@ -495,3 +495,14 @@ main { overflow-x: clip; }
 
 /* 120g photo: shown a little smaller so it reads as the smaller cup next to the 200g */
 .me-size--mint .me-size__media img { scale: 0.8; transform-origin: 50% 100%; mix-blend-mode: multiply; }
+
+/* Good to know: a real moment beside the questions */
+.me-know { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-12); align-items: center; max-width: 1080px; margin: 0 auto; }
+.me-know__photo { margin: 0; rotate: -2deg; padding: 10px; background: var(--white); border-radius: var(--radius-xl); box-shadow: 0 22px 44px rgba(53, 33, 71, 0.18); }
+.me-know__photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 62%; border-radius: calc(var(--radius-xl) - 8px); }
+.me-know .me-faq { max-width: none; margin: 0; }
+@media (max-width: 900px) {
+  .me-know { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
+  .me-know__photo { max-width: 460px; margin: 0 auto; width: 100%; rotate: -1.5deg; }
+  .me-know__photo img { aspect-ratio: 5 / 4; object-position: 50% 60%; }
+}
