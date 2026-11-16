@@ -8,12 +8,14 @@ interface Props {
   x?: number;
   y?: number;
   r?: number;
+  /** Phone-only sideways travel (px). When set, the item only slides sideways on phones. */
+  mx?: number;
   mode?: 'pass' | 'exit';
   class?: string;
   style?: string;
 }
-const { x = 0, y = 0, r = 0, mode = 'pass', class: cls, style } = Astro.props;
+const { x = 0, y = 0, r = 0, mx, mode = 'pass', class: cls, style } = Astro.props;
 ---
 <span class={['me-fly', cls].filter(Boolean).join(' ')} style={style} aria-hidden="true">
-  <span class="me-fly__inner" data-fly={mode} data-x={x} data-y={y} data-r={r}><slot /></span>
+  <span class="me-fly__inner" data-fly={mode} data-x={x} data-y={y} data-r={r} data-mx={mx}><slot /></span>
 </span>

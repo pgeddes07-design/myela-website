@@ -461,3 +461,6 @@ main { overflow-x: clip; }
   .me-stamp__face { width: 124px; height: 124px; }
 }
 @media (prefers-reduced-motion: reduce) { .me-stamp { transition: none; } }
+
+/* Phones: the strawberry sketch in the footer sat behind the button */
+@media (max-width: 760px) { .me-footer__sketch--b { display: none; } }

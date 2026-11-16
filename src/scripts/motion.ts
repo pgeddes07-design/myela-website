@@ -26,7 +26,9 @@ if (reduce || !('IntersectionObserver' in window)) {
   revealables.forEach((el) => io.observe(el));
 
   // 2. Fly things in and out with the scroll.
-  type Flyer = { el: HTMLElement; anchor: HTMLElement; mode: string; x: number; y: number; r: number; visible: boolean };
+  type Flyer = { el: HTMLElement; anchor: HTMLElement; mode: string; x: number; y: number; r: number; mx: number | null; visible: boolean };
+  // On phones the hero stacks: cups sit between the headline and the buttons, so they only slide sideways there.
+  const phone = window.matchMedia('(max-width: 760px)');
   const flyers: Flyer[] = [...document.querySelectorAll<HTMLElement>('[data-fly]')].map((el) => ({
     el,
     anchor: el.parentElement as HTMLElement,
@@ -34,6 +36,7 @@ if (reduce || !('IntersectionObserver' in window)) {
     x: Number(el.dataset.x || 0),
     y: Number(el.dataset.y || 0),
     r: Number(el.dataset.r || 0),
+    mx: el.dataset.mx !== undefined && el.dataset.mx !== '' ? Number(el.dataset.mx) : null,
     visible: true,
   }));
 
@@ -61,7 +64,11 @@ if (reduce || !('IntersectionObserver' in window)) {
         const r = f.anchor.getBoundingClientRect();
         p = Math.max(-1.4, Math.min(1.4, (r.top + r.height / 2 - vh / 2) / vh));
       }
-      f.el.style.transform = `translate3d(${(f.x * p).toFixed(1)}px, ${(f.y * p).toFixed(1)}px, 0) rotate(${(f.r * p).toFixed(2)}deg)`;
+      const side = phone.matches && f.mx !== null;
+      const x = side ? (f.mx as number) : f.x;
+      const y = side ? 0 : f.y;
+      const r = side ? f.r * 0.5 : f.r;
+      f.el.style.transform = `translate3d(${(x * p).toFixed(1)}px, ${(y * p).toFixed(1)}px, 0) rotate(${(r * p).toFixed(2)}deg)`;
     }
   };
   const queue = () => {
