@@ -486,7 +486,7 @@ main { overflow-x: clip; }
 .me-stockist__offer li { display: flex; align-items: flex-start; gap: var(--space-3); font: 700 1.0625rem/1.4 var(--font-body); }
 .me-stockist__offer .me-icon { flex: none; width: 24px; height: 24px; padding: 3px; border-radius: 50%; background: var(--mint); color: var(--plum); }
 @media (max-width: 760px) {
-  .me-stockist__offer { padding: var(--space-5) var(--space-5); rotate: 0deg; }
+  .me-stockist__offer { padding: var(--space-4) var(--space-6); rotate: 0deg; }
   .me-stockist__offer li { font-size: 1rem; }
 }
 
@@ -505,4 +505,40 @@ main { overflow-x: clip; }
   .me-know { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
   .me-know__photo { max-width: 460px; margin: 0 auto; width: 100%; rotate: -1.5deg; }
   .me-know__photo img { aspect-ratio: 5 / 4; object-position: 50% 60%; }
+}
+
+/* ================= v6: real kids ================= */
+
+/* Schools panel: photo on the right, offer list under the copy */
+.me-stockist { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: center; gap: var(--space-12); }
+.me-stockist__copy .me-stockist__offer { margin-top: var(--space-8); max-width: 460px; rotate: -1deg; }
+.me-stockist__photo { margin: 0; padding: 10px; background: var(--white); border-radius: var(--radius-xl); rotate: 2deg; box-shadow: 0 24px 48px rgba(30, 14, 50, 0.32); }
+.me-stockist__photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 40%; border-radius: calc(var(--radius-xl) - 8px); }
+@media (max-width: 900px) {
+  .me-stockist { grid-template-columns: minmax(0, 1fr); gap: var(--space-8); }
+  .me-stockist__photo { rotate: 1deg; }
+  .me-stockist__photo img { aspect-ratio: 3 / 2; }
+  .me-stockist__copy .me-stockist__offer { max-width: none; rotate: 0deg; }
+}
+
+/* Where to find: heading beside a chalk drawing that sketches itself in */
+.me-find__top { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--space-12); align-items: center; margin-bottom: var(--space-12); }
+.me-find__intro { margin: var(--space-4) 0 0; max-width: 44ch; font: 400 1.125rem/1.6 var(--font-body); }
+.me-chalk { position: relative; margin: 0; }
+.me-chalk img { display: block; width: 100%; height: auto; }
+.me-chalk__spark--a { position: absolute; top: 2%; left: 4%; }
+.me-chalk__swoosh { position: absolute; left: 18%; bottom: -6%; width: 64%; }
+.motion [data-reveal='chalk'] { opacity: 1; transform: none; }
+.motion [data-reveal='chalk'] img {
+  -webkit-mask-image: linear-gradient(105deg, #000 42%, rgba(0, 0, 0, 0.35) 50%, transparent 58%);
+          mask-image: linear-gradient(105deg, #000 42%, rgba(0, 0, 0, 0.35) 50%, transparent 58%);
+  -webkit-mask-size: 300% 100%; mask-size: 300% 100%;
+  -webkit-mask-position: 100% 0; mask-position: 100% 0;
+  transition: -webkit-mask-position 2.4s cubic-bezier(0.45, 0, 0.3, 1) 0.2s, mask-position 2.4s cubic-bezier(0.45, 0, 0.3, 1) 0.2s;
+}
+.motion [data-reveal='chalk'].is-in img { -webkit-mask-position: 0 0; mask-position: 0 0; }
+@media (max-width: 900px) {
+  .me-find__top { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); margin-bottom: var(--space-8); text-align: center; }
+  .me-find__intro { margin-inline: auto; }
+  .me-chalk { max-width: 520px; margin: 0 auto; width: 100%; }
 }

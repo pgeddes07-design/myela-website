@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import Doodle from './Doodle.astro';
 import Icon from './Icon.astro';
+import kids from '../assets/lifestyle/kids-garden.webp';
 const audiences = ['Tuckshops', 'School events', 'Coffee trucks'];
 const offer = ['Eight flavours to rotate', 'Sealed, frozen and ready for the freezer', '120g tuckshop size, 200g for events', 'Bulk pricing for regular orders'];
 ---
@@ -11,10 +13,11 @@ const offer = ['Eight flavours to rotate', 'Sealed, frozen and ready for the fre
     <h2 class="me-h2" id="stockist-title">Myela for your school</h2>
     <p class="me-stockist__body">Run a school tuckshop, a school event or a coffee truck? This is what we do best. Message us on WhatsApp with what you need and we'll send you bulk pricing.</p>
     <ul class="me-stockist__aud" aria-label="Who we supply">{audiences.map((a) => <li>{a}</li>)}</ul>
-  </div>
-  <div class="me-stockist__action">
     <ul class="me-stockist__offer">
       {offer.map((o) => <li><Icon name="check" /><span>{o}</span></li>)}
     </ul>
   </div>
+  <figure class="me-stockist__photo">
+    <Image src={kids} alt="Two kids laughing while they eat strawberry and toffee frozen yoghurt" widths={[480, 720, 960, 1280]} sizes="(max-width: 900px) 92vw, 560px" loading="lazy" />
+  </figure>
 </section>
