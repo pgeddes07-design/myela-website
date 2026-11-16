@@ -3,7 +3,6 @@ import Icon from './Icon.astro';
 import { MESSAGES, whatsappLink } from '../data/site';
 
 interface Props {
-  kind?: 'customer' | 'stockist';
   variant?: 'primary' | 'secondary' | 'light';
   size?: 'sm' | 'md' | 'lg';
   block?: boolean;
@@ -11,13 +10,13 @@ interface Props {
   shortLabel?: string; // shown on phones, e.g. in the header
   class?: string;
 }
-const { kind = 'customer', variant = 'primary', size = 'md', block = false, shortLabel, class: cls } = Astro.props;
-const label = Astro.props.label ?? (kind === 'stockist' ? 'Enquire about stocking Myela' : 'Order on WhatsApp');
-const href = whatsappLink(MESSAGES[kind]);
+const { variant = 'primary', size = 'md', block = false, shortLabel, class: cls } = Astro.props;
+const label = Astro.props.label ?? 'Order on WhatsApp';
+const href = whatsappLink(MESSAGES.customer);
 const classes = ['me-btn', `me-btn--${href ? variant : 'placeholder'}`, `me-btn--${size}`, block && 'me-btn--block', cls].filter(Boolean).join(' ');
 ---
 {href ? (
-  <a class={classes} href={href} target="_blank" rel="noopener noreferrer" aria-label={`${label} (opens WhatsApp)`} data-wa={kind}>
+  <a class={classes} href={href} target="_blank" rel="noopener noreferrer" aria-label={`${label} (opens WhatsApp)`} data-wa="order">
     <Icon name="chat" />
     {shortLabel ? (
       <>

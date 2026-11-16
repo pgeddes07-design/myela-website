@@ -35,15 +35,10 @@ export const CUTOUTS = {
 // 072 968 8080 becomes 27729688080.
 export const WHATSAPP_NUMBER = '27729688080';
 
-/** Customer message for one flavour (used by the pour animation's order button). */
-export const flavourMessage = (flavour: string) =>
-  `Hi Myela! I'd like to order some ${flavour} frozen yoghurt. Could you let me know which cup sizes are available, and how ordering works?`;
-
+// The one WhatsApp message the site sends (from the button in the header).
 export const MESSAGES = {
   customer:
-    "Hi Myela! I'd like to order some frozen yoghurt. Could you let me know which flavours and cup sizes are available, and how ordering works?",
-  stockist:
-    "Hi Myela! I'm interested in stocking your frozen yoghurt. My business is [business name], and I'd like to know about your supply options for [tuckshop / coffee truck / event].",
+    "Hi Myela! I'd like to order some frozen yoghurt.\n\nFlavours:\nHow many cups (120g or 200g):\nIt's for (school, tuckshop, event or just me):",
 };
 
 /** Builds a wa.me link, or null if the number isn't a valid international number. */
@@ -55,9 +50,9 @@ export function whatsappLink(message: string, number: string = WHATSAPP_NUMBER):
 
 export const SITE = {
   name: 'Myela',
-  title: 'Myela Frozen Yoghurt Johannesburg | Little cups. Big smiles.',
+  title: 'Myela Frozen Yoghurt | For school tuckshops and events in Johannesburg',
   description:
-    'Frozen yoghurt in 120g and 200g cups from Randpark Ridge, Johannesburg. Eight flavours for Randburg, Fourways, Sandton and the West Rand. Order on WhatsApp.',
+    'Sealed, frozen yoghurt cups for school tuckshops, school events and coffee trucks in Randburg, Fourways, Sandton and the West Rand. Eight flavours, bulk pricing on WhatsApp.',
   // Where Myela is based and the areas it supplies (used on the page and for Google).
   base: 'Randpark Ridge',
   city: 'Johannesburg',
@@ -114,14 +109,14 @@ export const SIZES: Size[] = [
   {
     grams: 120,
     price: 'R25',
-    body: 'A perfectly sized frozen-yoghurt treat for that sneaky, slightly healthier something sweet after supper. Order straight from us on WhatsApp.',
-    note: 'Also in participating school tuckshops',
+    body: 'Our tuckshop size. Just right for break time, or that sneaky, slightly healthier something sweet after supper.',
+    note: 'The tuckshop favourite',
     // image: cup120, imageAlt: '120g Myela cup with a flat lid',
   },
   {
     grams: 200,
     price: 'R45',
-    body: 'A bigger scoop of Myela happiness, with a dome lid. Ask us about flavours and availability.',
+    body: 'A bigger scoop of Myela happiness, with a dome lid. Great for school events and coffee trucks.',
     image: strawberry,
     imageAlt: 'Strawberry Myela frozen yoghurt in a 200g cup with a dome lid',
   },
@@ -129,45 +124,38 @@ export const SIZES: Size[] = [
 
 export const OUTLETS = [
   {
-    label: 'Partner outlet',
-    title: 'Kate Geddes Aesthetics',
-    body: 'Myela has been available through Kate Geddes Aesthetics. Message us to check current availability and how to order or collect.',
-  },
-  {
-    label: 'School tuckshops',
+    label: 'Schools',
     title: 'Primary-school tuckshops',
-    body: 'Look out for 120g Myela cups at participating primary-school tuckshops. You can also order them straight from us.',
+    body: 'Most of our cups go to school tuckshops. Look out for 120g Myela cups at participating primary schools.',
   },
   {
-    label: 'School events',
-    title: 'Coffee trucks at events',
-    body: 'You may also find Myela through participating coffee trucks at selected school events.',
+    label: 'Events',
+    title: 'School events and coffee trucks',
+    body: 'Find Myela at selected school events, through participating coffee trucks.',
   },
-];
-
-// How ordering works, shown as three steps above the FAQ.
-export const HOW_TO_ORDER = [
-  { title: 'Say hi on WhatsApp', body: "Tell us which flavours and cup sizes you're after." },
-  { title: "We check the freezer", body: "We'll confirm what's available and what it comes to." },
-  { title: 'Collect, or send an Uber', body: "Pick up from us in Randpark Ridge, or send an Uber courier if you're not too far." },
+  {
+    label: 'Small orders',
+    title: 'Collect in Randpark Ridge',
+    body: 'Just want a few cups? Order on WhatsApp and collect from Kate Geddes Aesthetics in Randpark Ridge.',
+  },
 ];
 
 export const FAQS = [
+  {
+    q: 'Do you supply schools and tuckshops?',
+    a: "Yes, that's what we do most. We supply primary-school tuckshops, school events and coffee trucks with sealed, frozen cups. Message us on WhatsApp for bulk pricing.",
+  },
   { q: 'Which sizes do you offer?', a: 'Myela frozen yoghurt comes in 120g and 200g cups.' },
   {
     q: 'How much is it?',
-    a: 'R25 for a 120g cup and R45 for a 200g cup. Buying in bulk or for a tuckshop? Message us on WhatsApp for pricing.',
+    a: 'Bulk and tuckshop pricing depends on the order, so message us for a quote. Single cups are R25 (120g) and R45 (200g).',
   },
   {
-    q: 'Where can I buy Myela?',
-    a: 'You can order directly on WhatsApp. We also supply participating primary-school tuckshops and selected school-event vendors.',
+    q: 'Can I order just a few cups?',
+    a: 'Yes. Order on WhatsApp and collect from Kate Geddes Aesthetics in Randpark Ridge.',
   },
   {
     q: 'Which areas do you cover?',
-    a: "We're based in Randpark Ridge, Johannesburg, and supply Randburg, Fourways, Sandton and the West Rand. If you're not too far away, some customers send an Uber courier to collect. A bit further out? Message us and we'll see what we can do.",
-  },
-  {
-    q: 'Can my business stock Myela?',
-    a: 'Yes! Message us on WhatsApp to chat about tuckshop, coffee-truck and event supply.',
+    a: "We're based in Randpark Ridge, Johannesburg, and supply schools and tuckshops in Randburg, Fourways, Sandton and the West Rand.",
   },
 ];

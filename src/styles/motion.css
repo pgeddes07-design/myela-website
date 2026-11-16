@@ -464,3 +464,31 @@ main { overflow-x: clip; }
 
 /* Phones: the strawberry sketch in the footer sat behind the button */
 @media (max-width: 760px) { .me-footer__sketch--b { display: none; } }
+
+/* ================= v5: one order button ================= */
+
+/* The header button is the only order button, so it keeps its full label on phones */
+@media (max-width: 1000px) {
+  .me-header__order .me-only-wide { display: inline; }
+  .me-header__order .me-only-narrow { display: none; }
+}
+@media (max-width: 374px) {
+  .me-header__order .me-only-wide { display: none; }
+  .me-header__order .me-only-narrow { display: inline; }
+}
+@media (max-width: 760px) {
+  .me-header__inner { gap: var(--space-2); }
+  .me-header__order { padding: 0 14px; font-size: 0.9375rem; }
+}
+
+/* Schools panel: what tuckshops get, in place of a second button */
+.me-stockist__offer { list-style: none; margin: 0; padding: var(--space-6) var(--space-8); display: grid; gap: var(--space-3); background: var(--white); color: var(--ink); border-radius: var(--radius-lg); rotate: 1.5deg; box-shadow: 0 18px 36px rgba(53, 33, 71, 0.22); }
+.me-stockist__offer li { display: flex; align-items: flex-start; gap: var(--space-3); font: 700 1.0625rem/1.4 var(--font-body); }
+.me-stockist__offer .me-icon { flex: none; width: 24px; height: 24px; padding: 3px; border-radius: 50%; background: var(--mint); color: var(--plum); }
+@media (max-width: 760px) {
+  .me-stockist__offer { padding: var(--space-5) var(--space-5); rotate: 0deg; }
+  .me-stockist__offer li { font-size: 1rem; }
+}
+
+/* FAQ section no longer has a big button above it */
+.me-section--blush#order .me-section-header, #order .me-section-header { margin-bottom: var(--space-8); }

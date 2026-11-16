@@ -2,16 +2,14 @@
 import { Image } from 'astro:assets';
 import logo from '../assets/brand/logo-white.png';
 import FruitSketch from './FruitSketch.astro';
-import WhatsAppButton from './WhatsAppButton.astro';
-import { MESSAGES, SITE, whatsappLink } from '../data/site';
-const wa = whatsappLink(MESSAGES.customer);
+import { SITE, WHATSAPP_NUMBER } from '../data/site';
 const year = new Date().getFullYear();
 const links = [
   { label: 'Our Story', href: '#story' },
+  { label: 'Schools & tuckshops', href: '#stock-myela' },
   { label: 'Flavours', href: '#flavours' },
   { label: 'Sizes', href: '#sizes' },
   { label: 'Find Myela', href: '#find-us' },
-  { label: 'Stock Myela', href: '#stock-myela' },
 ];
 ---
 <footer class="me-footer">
@@ -21,7 +19,7 @@ const links = [
     <div class="me-footer__brand">
       <Image class="me-logo" src={logo} alt="Myela frozen yoghurt" height={200} width={200} densities={[1, 2]} loading="lazy" />
       <p>Frozen yoghurt in little cups.<br />Little cups. Big smiles.</p>
-      <p class="me-footer__area">Based in Randpark Ridge, Johannesburg. Supplying Randburg, Fourways, Sandton and the West Rand.</p>
+      <p class="me-footer__area">Based in Randpark Ridge, Johannesburg. Supplying schools in Randburg, Fourways, Sandton and the West Rand.</p>
     </div>
 
     <nav class="me-footer__nav" aria-label="Footer">
@@ -34,9 +32,8 @@ const links = [
 
     <div class="me-footer__contact">
       <p class="me-footer__title">Say hi</p>
-      {wa && <a class="me-footer__phone" href={wa} target="_blank" rel="noopener noreferrer">072 968 8080</a>}
-      <p>Orders, flavours and stockist chats. It all happens on WhatsApp.</p>
-      <WhatsAppButton variant="light" />
+      <a class="me-footer__phone" href={`tel:+${WHATSAPP_NUMBER}`}>072 968 8080</a>
+      <p>Bulk orders, tuckshop supply and flavour questions. It all happens on WhatsApp.</p>
     </div>
 
     <p class="me-footer__legal">© {year} Myela. All rights reserved.</p>

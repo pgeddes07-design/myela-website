@@ -1,7 +1,6 @@
 ---
 import Doodle from './Doodle.astro';
-import Icon from './Icon.astro';
-import { FLAVOURS, flavourMessage, whatsappLink } from '../data/site';
+import { FLAVOURS } from '../data/site';
 const first = FLAVOURS[0];
 ---
 <div class="me-pour" style={`--pour-colour:${first.colour}`}>
@@ -28,7 +27,6 @@ const first = FLAVOURS[0];
           class="me-pour__btn"
           data-flavour={f.name}
           data-colour={f.colour}
-          data-href={whatsappLink(flavourMessage(f.name)) ?? ''}
           aria-pressed={i === 0 ? 'true' : 'false'}
         >
           <span class="me-pour__dot" style={`background:${f.colour}`} aria-hidden="true"></span>
@@ -37,9 +35,6 @@ const first = FLAVOURS[0];
       ))}
     </div>
     <p class="me-pour__now"><span class="me-sr">Now pouring: </span><span class="me-pour__name" aria-live="polite">{first.name}</span></p>
-    <a class="me-btn me-btn--primary me-pour__order" href={whatsappLink(flavourMessage(first.name)) ?? '#order'} target="_blank" rel="noopener noreferrer">
-      <Icon name="chat" /><span class="me-btn__label">Order this flavour</span>
-    </a>
   </div>
 </div>
 

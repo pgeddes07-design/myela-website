@@ -5,10 +5,10 @@ import WhatsAppButton from './WhatsAppButton.astro';
 
 const links = [
   { label: 'Our Story', href: '#story' },
+  { label: 'Schools', href: '#stock-myela' },
   { label: 'Flavours', href: '#flavours' },
   { label: 'Sizes', href: '#sizes' },
   { label: 'Where to Find', href: '#find-us' },
-  { label: 'Stock Myela', href: '#stock-myela' },
 ];
 ---
 <header class="me-header">
@@ -22,7 +22,7 @@ const links = [
       <ul>{links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
     </nav>
     <div class="me-header__cta">
-      <WhatsAppButton size="sm" shortLabel="Order" />
+      <WhatsAppButton size="sm" shortLabel="WhatsApp" class="me-header__order" />
     </div>
     <details class="me-header__menu">
       <summary aria-label="Menu"><span class="me-burger" aria-hidden="true"><span></span><span></span><span></span></span></summary>
