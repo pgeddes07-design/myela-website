@@ -494,7 +494,7 @@ main { overflow-x: clip; }
 .me-section--blush#order .me-section-header, #order .me-section-header { margin-bottom: var(--space-8); }
 
 /* 120g photo: shown a little smaller so it reads as the smaller cup next to the 200g */
-.me-size--mint .me-size__media img { scale: 0.8; transform-origin: 50% 100%; mix-blend-mode: multiply; }
+.me-size--mint .me-size__media img { scale: 0.82; transform-origin: 50% 50%; }
 
 /* Good to know: a real moment beside the questions */
 .me-know { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-12); align-items: center; max-width: 1080px; margin: 0 auto; }
