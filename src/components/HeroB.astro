@@ -1,0 +1,53 @@
+---
+// Version B hero: says who it's for, points schools at the schools panel, only the cups move.
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/logo-plum.png';
+import Doodle from './Doodle.astro';
+import Icon from './Icon.astro';
+import StoryStamp from './StoryStamp.astro';
+import { CUTOUTS } from '../data/site';
+
+// Cups in the hero. x / y / r = how far each flies (px, deg) after one screen of scrolling.
+const cups = [
+  { key: 'left', img: CUTOUTS.mango, alt: 'Mango Myela frozen yoghurt in a 200g cup', x: -40, y: -220, r: 28, mx: 140, delay: 0.25 },
+  { key: 'right', img: CUTOUTS.strawberry, alt: 'Strawberry Myela frozen yoghurt in a 200g cup', x: -260, y: 60, r: -24, mx: -140, delay: 0.35 },
+  { key: 'main', img: CUTOUTS.mixedBerry, alt: 'Mixed Berry Myela frozen yoghurt in a 200g cup', x: 0, y: 220, r: 0, mx: 0, delay: 0.1 },
+  { key: 'tiny-a', img: CUTOUTS.cherry, alt: '', x: -340, y: 320, r: -40, mx: -110, delay: 0.55 },
+  { key: 'tiny-b', img: CUTOUTS.passionFruit, alt: '', x: -60, y: 320, r: 36, mx: 110, delay: 0.65 },
+];
+---
+<section class="hx hx--b" id="top" aria-labelledby="hero-title">
+  <div class="hx__inner">
+    <div class="hx__copy">
+      <StoryStamp class="hx__stamp" />
+      <Image class="hx__logo" src={logo} alt="Myela frozen yoghurt logo" width={220} height={220} densities={[1, 2]} loading="eager" />
+      <h1 class="me-h1 hx__title" id="hero-title">FROZEN<br />YOGHURT.</h1>
+      <p class="me-hero__tagline hx__tagline">
+        Made for school tuckshops.
+        <Doodle shape="swoosh" tone="white" size={190} class="me-hero__swoosh" />
+      </p>
+      <p class="hx__body">Sealed, frozen 120g cups in eight flavours. Easy to store, easy to sell, and started by two sisters in Randpark Ridge.</p>
+      <div class="me-hero__buttons hx__buttons">
+        <a class="me-btn me-btn--light me-btn--lg" href="#stock-myela"><span class="me-btn__label">Stock Myela at your school</span><Icon name="down" /></a>
+      </div>
+    </div>
+
+    <div class="hx__stage">
+      <span class="hx__glow" aria-hidden="true"></span>
+
+      {cups.map((c) => (
+        <span class={`hx__cup hx__cup--${c.key}`} style={`--d:${c.delay}s`}>
+          <span class="me-fly__inner" data-fly="exit" data-x={c.x} data-y={c.y} data-r={c.r} data-mx={c.mx}>
+            <Image src={c.img} alt={c.alt} widths={c.key.startsWith('tiny') ? [160, 240] : [280, 420, 600]} sizes={c.key === 'main' ? '(max-width: 760px) 46vw, 300px' : c.key.startsWith('tiny') ? '120px' : '(max-width: 760px) 34vw, 220px'} loading="eager" fetchpriority={c.key === 'main' ? 'high' : 'auto'} />
+          </span>
+        </span>
+      ))}
+
+      <Doodle shape="arrow" tone="white" size={84} rotate={22} label="pick a flavour!" labelPosition="start" class="me-hero__note hx__note hx__note--top" />
+      <Doodle shape="arrow" tone="white" size={72} rotate={200} label="120g + 200g" labelPosition="end" class="me-hero__note hx__note hx__note--bottom" />
+      <Doodle shape="sparkle" tone="white" size={44} class="hx__spark hx__spark--a" />
+      <Doodle shape="sparkle" tone="white" size={26} class="hx__spark hx__spark--b" />
+      <Doodle shape="sparkle" tone="white" size={34} class="hx__spark hx__spark--c" />
+    </div>
+  </div>
+</section>

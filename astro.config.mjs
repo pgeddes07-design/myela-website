@@ -8,6 +8,6 @@ export default defineConfig({
   site: 'https://pgeddes07-design.github.io',
   base: '/myela-website',
   trailingSlash: 'ignore',
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: (page) => !/\/(b|compare)\/?$/.test(page) })],
   build: { inlineStylesheets: 'auto' },
 });

@@ -6,13 +6,19 @@ import Fly from './Fly.astro';
 import Doodle from './Doodle.astro';
 import sketch from '../assets/story/miya-ella-sketch.webp';
 import { CUTOUTS, STORY } from '../data/site';
+interface Props { /** Version B: no flying decorations over the text. */ calm?: boolean }
+const { calm = false } = Astro.props;
 ---
 <section class="me-section me-story" id="story" aria-labelledby="story-title">
+  {!calm && (
+    <>
   <Fly x={-220} y={0} r={-25} class="me-story__fly me-story__fly--a">
     <Image src={CUTOUTS.cherry} alt="" widths={[200, 300]} sizes="150px" loading="lazy" />
   </Fly>
   <Fly x={0} y={-160} r={20} class="me-story__fly me-story__fly--b"><FruitSketch fruit="raspberry" tone="pink" size={84} /></Fly>
   <Fly x={120} y={-80} r={-20} class="me-story__fly me-story__fly--c"><FruitSketch fruit="litchi" tone="purple" size={76} /></Fly>
+    </>
+  )}
 
   <div class="me-container me-story__grid">
     <div class="me-story__art" data-reveal="pop">

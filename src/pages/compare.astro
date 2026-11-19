@@ -1,0 +1,59 @@
+---
+// Side-by-side comparison of version A (the live homepage) and version B.
+// Not linked from the site and kept out of Google.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<!doctype html>
+<html lang="en-ZA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Myela website: A vs B</title>
+    <link rel="icon" type="image/png" sizes="32x32" href={`${base}/favicon-32.png`} />
+    <style>
+      :root { --plum: #352147; --lavender: #ada2e5; --blush: #fff2f7; }
+      * { box-sizing: border-box; }
+      body { margin: 0; font: 16px/1.4 "Nunito Sans", system-ui, sans-serif; color: var(--plum); background: var(--blush); }
+      header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 20px; background: var(--plum); color: #fff; }
+      h1 { margin: 0; font-size: 1.125rem; }
+      .views { display: inline-flex; padding: 4px; border-radius: 999px; background: rgba(255,255,255,0.12); }
+      .views button { border: 0; border-radius: 999px; padding: 8px 16px; background: transparent; color: #fff; font: 700 0.9375rem/1 inherit; font-family: inherit; cursor: pointer; }
+      .views button[aria-pressed="true"] { background: #fff; color: var(--plum); }
+      main { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 16px; height: calc(100vh - 64px); }
+      section { display: flex; flex-direction: column; min-width: 0; }
+      .label { display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 8px; font-weight: 800; }
+      .label a { color: var(--plum); font-weight: 600; font-size: 0.875rem; }
+      .frame { flex: 1; display: flex; justify-content: center; overflow: hidden; border-radius: 16px; background: #fff; box-shadow: 0 10px 30px rgba(53,33,71,0.12); }
+      iframe { border: 0; height: 100%; width: 100%; transform-origin: top center; }
+      body.phone iframe { width: 390px; max-width: 100%; }
+      @media (max-width: 800px) { main { grid-template-columns: 1fr; height: auto; } .frame { height: 80vh; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Myela website: version A vs version B</h1>
+      <div class="views" role="group" aria-label="Screen size">
+        <button type="button" data-view="desktop" aria-pressed="true">Desktop</button>
+        <button type="button" data-view="phone" aria-pressed="false">Phone</button>
+      </div>
+    </header>
+    <main>
+      <section>
+        <p class="label">A: the current site <a href={`${base}/index.html`} target="_blank">open full screen</a></p>
+        <div class="frame"><iframe src={`${base}/index.html`} title="Version A"></iframe></div>
+      </section>
+      <section>
+        <p class="label">B: with the video's five changes <a href={`${base}/b/index.html`} target="_blank">open full screen</a></p>
+        <div class="frame"><iframe src={`${base}/b/index.html`} title="Version B"></iframe></div>
+      </section>
+    </main>
+    <script>
+      const buttons = document.querySelectorAll<HTMLButtonElement>('[data-view]');
+      buttons.forEach((b) => b.addEventListener('click', () => {
+        buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        document.body.classList.toggle('phone', b.dataset.view === 'phone');
+      }));
+    </script>
+  </body>
+</html>
