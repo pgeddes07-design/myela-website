@@ -23,9 +23,7 @@ const offer = ['Eight flavours to rotate', 'Sealed, frozen and ready for the fre
     <Image class="me-tuck__cup" src={cup120} alt="A sealed 120g Myela Strawberry cup with the Myela label on the lid" widths={[360, 540, 720]} sizes="(max-width: 900px) 60vw, 300px" loading="lazy" />
     <figcaption class="me-tuck__note">Sealed, frozen and ready to sell.</figcaption>
     <ul class="me-tuck__flavours" aria-label={`Comes in ${FLAVOURS.length} flavours`}>
-      {FLAVOURS.map((f) => (
-        <li><Image src={f.image} alt={f.name} title={f.name} widths={[80, 120]} sizes="56px" loading="lazy" /></li>
-      ))}
+      {FLAVOURS.map((f) => <li style={`--dot:${f.colour}`} title={f.name}><span class="me-sr">{f.name}</span></li>)}
     </ul>
     <p class="me-tuck__count">All {FLAVOURS.length} flavours</p>
   </figure>
