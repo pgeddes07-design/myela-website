@@ -2,7 +2,8 @@
 import { Image } from 'astro:assets';
 import Doodle from './Doodle.astro';
 import Icon from './Icon.astro';
-import kids from '../assets/lifestyle/kids-garden.webp';
+import cup120 from '../assets/cups/strawberry-120g.webp';
+import { FLAVOURS } from '../data/site';
 const audiences = ['Tuckshops', 'School events', 'Coffee trucks'];
 const offer = ['Eight flavours to rotate', 'Sealed, frozen and ready for the freezer', '120g tuckshop size, 200g for events', 'Bulk pricing for regular orders'];
 ---
@@ -17,7 +18,13 @@ const offer = ['Eight flavours to rotate', 'Sealed, frozen and ready for the fre
       {offer.map((o) => <li><Icon name="check" /><span>{o}</span></li>)}
     </ul>
   </div>
-  <figure class="me-stockist__photo">
-    <Image src={kids} alt="Two kids laughing while they eat strawberry and toffee frozen yoghurt" widths={[480, 720, 960, 1280]} sizes="(max-width: 900px) 92vw, 560px" loading="lazy" />
+  <figure class="me-stockist__photo me-tuck">
+    <span class="me-tuck__sticker" aria-hidden="true"><b>120g</b>tuckshop<br />size</span>
+    <Image class="me-tuck__cup" src={cup120} alt="A sealed 120g Myela Strawberry cup with the Myela label on the lid" widths={[360, 540, 720]} sizes="(max-width: 900px) 60vw, 300px" loading="lazy" />
+    <figcaption class="me-tuck__note">sealed, frozen &amp; ready to sell</figcaption>
+    <ul class="me-tuck__flavours" aria-label={`Comes in ${FLAVOURS.length} flavours`}>
+      {FLAVOURS.map((f) => <li style={`--dot:${f.colour}`}><span class="me-sr">{f.name}</span></li>)}
+    </ul>
+    <p class="me-tuck__count" aria-hidden="true">{FLAVOURS.length} flavours</p>
   </figure>
 </section>

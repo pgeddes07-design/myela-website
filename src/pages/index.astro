@@ -1,8 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import '../styles/version-b.css';
 import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
+import HeroB from '../components/HeroB.astro';
 import Ticker from '../components/Ticker.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import FlavourCard from '../components/FlavourCard.astro';
@@ -12,37 +13,33 @@ import OutletCard from '../components/OutletCard.astro';
 import StockistPanel from '../components/StockistPanel.astro';
 import Faq from '../components/Faq.astro';
 import Footer from '../components/Footer.astro';
-import FruitSketch from '../components/FruitSketch.astro';
-import Fly from '../components/Fly.astro';
 import Doodle from '../components/Doodle.astro';
-import PourStage from '../components/PourStage.astro';
+import OrderBuilder from '../components/OrderBuilder.astro';
 import { CUTOUTS, FLAVOURS, OUTLETS, SIZES } from '../data/site';
 import garden from '../assets/lifestyle/strawberry-garden.webp';
 import kidsSketch from '../assets/lifestyle/kids-sketch.webp';
 ---
-<Base>
+<Base bodyClass="v-b">
   <Header />
   <main id="main">
-    <Hero />
+    <HeroB />
     <Ticker />
-    <Story />
+    <Story calm />
     <section class="me-section me-deco" aria-label="Stock Myela">
-      <Fly x={320} y={-80} r={30} class="me-deco__item me-deco--st-a me-deco__cup">
+      <span class="me-fly me-deco__item me-deco--st-a me-deco__cup" aria-hidden="true"><span class="me-fly__inner">
         <Image src={CUTOUTS.fruitsOfTheForest} alt="" widths={[200, 300]} sizes="150px" loading="lazy" />
-      </Fly>
+      </span></span>
       <div class="me-container" data-reveal="pop">
         <StockistPanel />
       </div>
     </section>
 
     <section class="me-section me-section--flavours me-deco" id="flavours" aria-labelledby="flavours-title">
-      <Fly x={-260} y={40} r={-30} class="me-deco__item me-deco--fl-a"><FruitSketch fruit="strawberry" tone="pink" size={86} /></Fly>
-      <Fly x={220} y={-60} r={30} class="me-deco__item me-deco--fl-b"><FruitSketch fruit="cherries" tone="berry" size={90} /></Fly>
       <div class="me-container">
         <div data-reveal>
-          <SectionHeader id="flavours-title" title="Find your flavour!" intro="Which one will you choose? Explore the Myela range below." sparkle />
+          <SectionHeader id="flavours-title" title="Build your order" intro="Tap a flavour to watch it pour, add it to your order, and send it straight to us on WhatsApp." />
         </div>
-        <div data-reveal="pop"><PourStage /></div>
+        <div data-reveal="pop"><OrderBuilder /></div>
         <p class="me-flavour-intro" data-reveal>And here's the real thing, sealed in our 200g cups:</p>
         <ul class="me-flavour-grid">
           {FLAVOURS.map((f, i) => <li data-reveal style={`--delay:${(i % 4) * 80}ms`}><FlavourCard flavour={f} /></li>)}
@@ -51,8 +48,6 @@ import kidsSketch from '../assets/lifestyle/kids-sketch.webp';
     </section>
 
     <section class="me-section me-section--sizes me-deco" id="sizes" aria-labelledby="sizes-title">
-      <Fly x={200} y={80} r={24} class="me-deco__item me-deco--sz-b"><FruitSketch fruit="mango" tone="purple" size={84} /></Fly>
-      <Fly x={-120} y={-120} r={-40} class="me-deco__item me-deco--sz-c"><FruitSketch fruit="drop" tone="pink" size={56} /></Fly>
       <div class="me-container">
         <div data-reveal>
           <SectionHeader id="sizes-title" title="Two sizes. Lots of happy." intro="A little treat or a little more? Pick the cup that suits you." />
@@ -86,10 +81,9 @@ import kidsSketch from '../assets/lifestyle/kids-sketch.webp';
 
 
     <section class="me-section me-section--blush me-deco" id="order" aria-labelledby="order-title">
-      <Fly x={180} y={60} r={30} class="me-deco__item me-deco--or-b"><FruitSketch fruit="cherries" tone="pink" size={80} /></Fly>
       <div class="me-container">
         <div data-reveal>
-          <SectionHeader id="order-title" title="Good to know" intro="Anything else? The WhatsApp button at the top goes straight to us." />
+          <SectionHeader id="order-title" title="Good to know" intro="Anything else? Message us on WhatsApp and Kate will get back to you." />
         </div>
         <div class="me-know">
           <figure class="me-know__photo" data-reveal="left">

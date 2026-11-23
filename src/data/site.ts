@@ -109,7 +109,7 @@ export interface Size {
 export const SIZES: Size[] = [
   {
     grams: 120,
-    price: 'R25',
+    price: 'R30',
     body: 'Our tuckshop size. Just right for break time, or that sneaky, slightly healthier something sweet after supper.',
     note: 'The tuckshop favourite',
     image: strawberry120,
@@ -150,7 +150,7 @@ export const FAQS = [
   { q: 'Which sizes do you offer?', a: 'Myela frozen yoghurt comes in 120g and 200g cups.' },
   {
     q: 'How much is it?',
-    a: 'Bulk and tuckshop pricing depends on the order, so message us for a quote. Single cups are R25 (120g) and R45 (200g).',
+    a: 'Bulk and tuckshop pricing depends on the order, so message us for a quote. Single cups are R30 (120g) and R45 (200g).',
   },
   {
     q: 'Can I order just a few cups?',

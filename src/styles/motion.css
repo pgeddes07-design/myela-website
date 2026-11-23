@@ -521,6 +521,25 @@ main { overflow-x: clip; }
   .me-stockist__copy .me-stockist__offer { max-width: none; rotate: 0deg; }
 }
 
+/* Schools panel picture: the real 120g tuckshop cup on a white card */
+.me-tuck { position: relative; display: grid; justify-items: center; padding: var(--space-8) var(--space-6) var(--space-6); text-align: center; }
+.me-stockist__photo .me-tuck__cup { width: min(68%, 300px); aspect-ratio: auto; object-fit: contain; border-radius: 0; }
+.me-tuck__sticker {
+  position: absolute; top: 8%; right: 6%; display: grid; place-content: center; width: 104px; height: 104px; border-radius: 50%;
+  background: var(--mint); color: var(--plum); rotate: 10deg; box-shadow: var(--shadow-card);
+  font: 700 0.875rem/1.05 var(--font-body); text-transform: lowercase;
+}
+.me-tuck__sticker b { display: block; font: 700 1.75rem/1 var(--font-display); text-transform: none; }
+.me-tuck__note { margin: var(--space-3) 0 var(--space-4); font: 600 1.75rem/1.1 var(--font-hand); color: var(--purple); rotate: -2deg; }
+.me-tuck__flavours { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.me-tuck__flavours li { width: 22px; height: 22px; border-radius: 50%; background: var(--dot); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.7), 0 2px 6px rgba(30, 14, 50, 0.18); }
+.me-tuck__count { margin: var(--space-2) 0 0; font: 800 0.875rem/1 var(--font-body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--plum); }
+@media (max-width: 900px) {
+  .me-stockist__photo .me-tuck__cup { width: min(60%, 260px); }
+  .me-tuck__sticker { top: 4%; right: 4%; width: 80px; height: 80px; font-size: 0.6875rem; }
+  .me-tuck__sticker b { font-size: 1.375rem; }
+}
+
 /* Where to find: heading beside a chalk drawing that sketches itself in */
 .me-find__top { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--space-12); align-items: center; margin-bottom: var(--space-12); }
 .me-find__intro { margin: var(--space-4) 0 0; max-width: 44ch; font: 400 1.125rem/1.6 var(--font-body); }
