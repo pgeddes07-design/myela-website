@@ -35,16 +35,10 @@ npm run build    # checks and builds the site into dist/
 
 ## Hosting
 
-GitHub Pages, deployed by `.github/workflows/deploy.yml` on every push to `main`. One-time setup in the repo: **Settings → Pages → Source: GitHub Actions**.
+Vercel, connected to this GitHub repo: every push to `main` deploys automatically. Live address: `https://myelayoghurt.co.za` (domain and DNS records are managed in the Vercel project under **Domains**).
 
-Live address: `https://myelayoghurt.co.za` (the old `pgeddes07-design.github.io/myela-website/` link forwards there)
-
-### Connecting a domain later
-
-1. In `astro.config.mjs`, set `site` to the domain (e.g. `https://myela.co.za`) and delete the `base` line.
-2. Update the `Sitemap:` line in `public/robots.txt`.
-3. Add the domain under **Settings → Pages → Custom domain** and point the domain's DNS at GitHub Pages.
+The old GitHub Pages workflow (`.github/workflows/deploy.yml`) no longer runs on push; it can only be started by hand.
 
 ## Brand rules (short version)
 
-Spell it **yoghurt** and **Myela**. Say **cups** (120g flat lid, 200g dome lid), never tubs or soft-serve. No yellow. No em dashes. Retail prices only (R25 and R45); bulk and tuckshop pricing stays on WhatsApp. The full rules live in the Myela design system.
+Spell it **yoghurt** and **Myela**. Say **cups** (120g flat lid, 200g dome lid), never tubs or soft-serve. No yellow. No em dashes. Retail prices only (R30 and R45); bulk and tuckshop pricing stays on WhatsApp. The full rules live in the Myela design system.

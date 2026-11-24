@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// Served from the domain root at myelayoghurt.co.za (GitHub Pages custom domain).
+// Served from the domain root at myelayoghurt.co.za, hosted on Vercel.
 export default defineConfig({
   site: 'https://myelayoghurt.co.za',
   trailingSlash: 'ignore',

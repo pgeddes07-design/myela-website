@@ -1,8 +1,8 @@
 name: Deploy to GitHub Pages
 
+# The site is hosted on Vercel now (myelayoghurt.co.za), which builds every push to main.
+# This GitHub Pages deploy only runs if started by hand from the Actions tab.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
