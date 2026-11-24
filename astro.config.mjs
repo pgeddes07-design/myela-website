@@ -2,11 +2,9 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// While the site lives on GitHub Pages it's served from /myela-website.
-// When a domain is connected: set `site` to the domain and remove `base`.
+// Served from the domain root at myelayoghurt.co.za (GitHub Pages custom domain).
 export default defineConfig({
-  site: 'https://pgeddes07-design.github.io',
-  base: '/myela-website',
+  site: 'https://myelayoghurt.co.za',
   trailingSlash: 'ignore',
   integrations: [sitemap({ filter: (page) => !/\/b\/?$/.test(page) })],
   build: { inlineStylesheets: 'auto' },

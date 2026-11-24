@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pgeddes07-design.github.io/myela-website/sitemap-index.xml
+Sitemap: https://myelayoghurt.co.za/sitemap-index.xml

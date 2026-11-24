@@ -29,7 +29,7 @@ Needs Node.js 20 or newer.
 
 ```bash
 npm install
-npm run dev      # local preview at http://localhost:4321/myela-website/
+npm run dev      # local preview at http://localhost:4321/
 npm run build    # checks and builds the site into dist/
 ```
 
@@ -37,7 +37,7 @@ npm run build    # checks and builds the site into dist/
 
 GitHub Pages, deployed by `.github/workflows/deploy.yml` on every push to `main`. One-time setup in the repo: **Settings → Pages → Source: GitHub Actions**.
 
-Live address while there's no domain: `https://pgeddes07-design.github.io/myela-website/`
+Live address: `https://myelayoghurt.co.za` (the old `pgeddes07-design.github.io/myela-website/` link forwards there)
 
 ### Connecting a domain later
 
