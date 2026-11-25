@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import logo from '../assets/brand/logo-white.png';
 import FruitSketch from './FruitSketch.astro';
-import { SITE, WHATSAPP_NUMBER } from '../data/site';
+import { SITE, WHATSAPP_NUMBER, WHATSAPP_DISPLAY } from '../data/site';
 const year = new Date().getFullYear();
 const home = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
 const links = [
@@ -34,7 +34,7 @@ const links = [
 
     <div class="me-footer__contact">
       <p class="me-footer__title">Say hi</p>
-      <a class="me-footer__phone" href={`tel:+${WHATSAPP_NUMBER}`}>072 968 8080</a>
+      <a class="me-footer__phone" href={`tel:+${WHATSAPP_NUMBER}`}>{WHATSAPP_DISPLAY}</a>
       <p>Bulk orders, tuckshop supply and flavour questions. It all happens on WhatsApp.</p>
     </div>
 

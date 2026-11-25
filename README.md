@@ -8,7 +8,7 @@ Almost everything you'd want to change lives in **`src/data/site.ts`**:
 
 | To change | Edit in `src/data/site.ts` |
 | --- | --- |
-| WhatsApp number | `WHATSAPP_NUMBER` (international digits, e.g. `27729688080`) |
+| WhatsApp number | `WHATSAPP_NUMBER` (international digits, e.g. `27645578945`) and `WHATSAPP_DISPLAY` (how it's written, e.g. `064 557 8945`) |
 | Prefilled WhatsApp messages | `MESSAGES.customer`, `MESSAGES.stockist` |
 | Flavours (add, remove, reorder) | `FLAVOURS` |
 | The three cups in the hero | `HERO_CUPS` |

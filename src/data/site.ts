@@ -33,8 +33,10 @@ export const CUTOUTS = {
 };
 
 // WhatsApp number in international digits: no "+", no leading 0.
-// 072 968 8080 becomes 27729688080.
-export const WHATSAPP_NUMBER = '27729688080';
+// 064 557 8945 becomes 27645578945.
+export const WHATSAPP_NUMBER = '27645578945';
+// How the number is written on the page.
+export const WHATSAPP_DISPLAY = '064 557 8945';
 
 // The one WhatsApp message the site sends (from the button in the header).
 export const MESSAGES = {
