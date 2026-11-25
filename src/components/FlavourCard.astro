@@ -8,8 +8,8 @@ const { flavour } = Astro.props;
   <div class="me-flavour__media">
     <Image
       class="me-photo"
-      src={flavour.image}
-      alt={`${flavour.name} Myela frozen yoghurt in a 200g cup`}
+      src={flavour.swirl ?? flavour.image}
+      alt={`${flavour.name} Myela frozen yoghurt in a 120g cup`}
       widths={[240, 360, 480, 640]}
       sizes="(max-width: 1023px) 46vw, 280px"
       loading="lazy"
