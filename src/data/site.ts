@@ -142,12 +142,31 @@ export const OUTLETS = [
   },
 ];
 
+// Typical nutritional information from our dairy supplier, per 100g.
+// Per-cup columns are worked out from these figures (120g = x1.2, 200g = x2).
+export const NUTRITION = {
+  source: 'Typical values for our frozen yoghurt, supplied by our dairy.',
+  rows: [
+    { label: 'Energy', unit: 'kJ', per100: 588, decimals: 0 },
+    { label: 'Protein', unit: 'g', per100: 2.86, decimals: 2 },
+    { label: 'Carbohydrate', unit: 'g', per100: 20.6, decimals: 1 },
+    { label: 'Total fat', unit: 'g', per100: 5.1, decimals: 1 },
+    { label: 'Dietary fibre', unit: 'g', per100: 0.1, decimals: 1 },
+    { label: 'Total sodium', unit: 'mg', per100: 81.8, decimals: 1 },
+  ],
+  servings: [100, 120, 200],
+};
+
 export const FAQS = [
   {
     q: 'Do you supply schools and tuckshops?',
     a: "Yes, that's what we do most. We supply primary-school tuckshops, school events and coffee trucks with sealed, frozen cups. Message us on WhatsApp for bulk pricing.",
   },
   { q: 'Which sizes do you offer?', a: 'Myela frozen yoghurt comes in 120g and 200g cups.' },
+  {
+    q: "What's the nutritional information?",
+    a: 'Per 100g: 588 kJ, 2.86g protein, 20.6g carbohydrate, 5.1g fat. The full table, per 120g and 200g cup too, is on our Nutrition page (link at the bottom of the site).',
+  },
   {
     q: 'How much is it?',
     a: 'Bulk and tuckshop pricing depends on the order, so message us for a quote. Single cups are R30 (120g) and R45 (200g).',

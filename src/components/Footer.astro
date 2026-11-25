@@ -4,12 +4,14 @@ import logo from '../assets/brand/logo-white.png';
 import FruitSketch from './FruitSketch.astro';
 import { SITE, WHATSAPP_NUMBER } from '../data/site';
 const year = new Date().getFullYear();
+const home = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
 const links = [
-  { label: 'Our Story', href: '#story' },
-  { label: 'Schools & tuckshops', href: '#stock-myela' },
-  { label: 'Flavours', href: '#flavours' },
-  { label: 'Sizes', href: '#sizes' },
-  { label: 'Find Myela', href: '#find-us' },
+  { label: 'Our Story', href: `${home}#story` },
+  { label: 'Schools & tuckshops', href: `${home}#stock-myela` },
+  { label: 'Flavours', href: `${home}#flavours` },
+  { label: 'Sizes', href: `${home}#sizes` },
+  { label: 'Find Myela', href: `${home}#find-us` },
+  { label: 'Nutritional info', href: `${home}nutrition/` },
 ];
 ---
 <footer class="me-footer">

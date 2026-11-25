@@ -3,17 +3,18 @@ import { Image } from 'astro:assets';
 import logo from '../assets/brand/logo-plum.png';
 import WhatsAppButton from './WhatsAppButton.astro';
 
+const home = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
 const links = [
-  { label: 'Our Story', href: '#story' },
-  { label: 'Schools', href: '#stock-myela' },
-  { label: 'Flavours', href: '#flavours' },
-  { label: 'Sizes', href: '#sizes' },
-  { label: 'Where to Find', href: '#find-us' },
+  { label: 'Our Story', href: `${home}#story` },
+  { label: 'Schools', href: `${home}#stock-myela` },
+  { label: 'Flavours', href: `${home}#flavours` },
+  { label: 'Sizes', href: `${home}#sizes` },
+  { label: 'Where to Find', href: `${home}#find-us` },
 ];
 ---
 <header class="me-header">
   <div class="me-header__inner">
-    <a class="me-header__home" href="#top" aria-label="Myela home">
+    <a class="me-header__home" href={`${home}#top`} aria-label="Myela home">
       <span class="me-header__badge">
         <Image class="me-logo" src={logo} alt="Myela frozen yoghurt" height={84} width={84} densities={[1, 2, 3]} loading="eager" />
       </span>

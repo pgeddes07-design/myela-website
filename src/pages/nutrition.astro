@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import '../styles/version-b.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { NUTRITION } from '../data/site';
+
+const home = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
+const fmt = (n: number, d: number) => n.toFixed(d);
+const rows = NUTRITION.rows.map((r) => ({
+  ...r,
+  values: NUTRITION.servings.map((g) => fmt((r.per100 * g) / 100, r.decimals)),
+}));
+const heads = NUTRITION.servings.map((g) => (g === 100 ? 'Per 100g' : `Per ${g}g cup`));
+---
+<Base bodyClass="v-b" title="Nutritional information | Myela Frozen Yoghurt">
+  <Header />
+  <main id="main">
+    <section class="me-section me-section--blush me-nutri" aria-labelledby="nutri-title">
+      <div class="me-container">
+        <SectionHeader id="nutri-title" title="Nutritional information" intro="What's in a cup of Myela frozen yoghurt, per 100g and per cup." />
+        <div class="me-nutri__card">
+          <div class="me-nutri__scroll">
+            <table>
+              <caption>Typical nutritional information</caption>
+              <thead>
+                <tr><th scope="col">Typical values</th>{heads.map((h, i) => <th scope="col" class={i === 1 ? 'me-nutri__hl' : undefined}>{h}</th>)}</tr>
+              </thead>
+              <tbody>
+                {rows.map((r) => (
+                  <tr>
+                    <th scope="row">{r.label} ({r.unit})</th>
+                    {r.values.map((v, i) => <td class={i === 1 ? 'me-nutri__hl' : undefined}>{v}</td>)}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="me-nutri__note">{NUTRITION.source} The per-cup figures are worked out from the per 100g values. Values can vary slightly between flavours.</p>
+          <a class="me-nutri__back" href={home}>Back to the homepage</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

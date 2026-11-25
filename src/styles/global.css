@@ -418,3 +418,25 @@ img { max-width: 100%; }
 }
 .me-header__home { flex: none; }
 .me-header .me-logo { width: auto; max-width: none; }
+
+/* ===== Nutrition page ===== */
+.me-nutri { padding-top: calc(var(--section-desktop) + 40px); }
+.me-nutri__card { max-width: 760px; margin: 0 auto; background: var(--white); border-radius: var(--radius-xl); box-shadow: var(--shadow-card); padding: var(--space-8); }
+.me-nutri__scroll { overflow-x: auto; }
+.me-nutri table { width: 100%; border-collapse: collapse; font: 400 1rem/1.4 var(--font-body); color: var(--plum); }
+.me-nutri caption { text-align: left; font: 700 1.375rem/1.2 var(--font-display); padding-bottom: var(--space-4); }
+.me-nutri th, .me-nutri td { padding: var(--space-3) var(--space-3); border-bottom: 1px solid #e4dcef; text-align: right; white-space: nowrap; }
+.me-nutri th:first-child, .me-nutri td:first-child { text-align: left; padding-left: 0; }
+.me-nutri thead th { font-weight: 800; font-size: 0.9375rem; border-bottom: 2px solid var(--plum); }
+.me-nutri tbody th { font-weight: 700; }
+.me-nutri td { font-variant-numeric: tabular-nums; }
+.me-nutri__hl { background: var(--blush); }
+.me-nutri__note { margin: var(--space-6) 0 0; font: 400 0.9375rem/1.6 var(--font-body); color: var(--plum); }
+.me-nutri__back { display: inline-block; margin-top: var(--space-6); font: 700 1rem/1.4 var(--font-body); color: var(--plum); }
+@media (max-width: 600px) {
+  .me-nutri { padding-top: calc(var(--section-mobile) + 40px); }
+  .me-nutri__card { padding: var(--space-6) var(--space-4); }
+  .me-nutri th, .me-nutri td { padding: var(--space-3) 6px; font-size: 0.875rem; }
+  .me-nutri thead th { white-space: normal; vertical-align: bottom; font-size: 0.8125rem; }
+  .me-nutri tbody th { white-space: normal; }
+}
