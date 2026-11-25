@@ -177,6 +177,10 @@ export const FAQS = [
   },
   { q: 'Which sizes do you offer?', a: 'Myela frozen yoghurt comes in 120g and 200g cups.' },
   {
+    q: 'Is Myela Halaal?',
+    a: "Our frozen yoghurt base comes from a SANHA-certified Halaal supplier. The kitchen where we make Myela isn't Halaal certified, so we can't call Myela Halaal. Questions? WhatsApp us.",
+  },
+  {
     q: "What's the nutritional information?",
     a: 'Per 100g: 588 kJ, 2.86g protein, 20.6g carbohydrate, 5.1g fat. The full table, per 120g and 200g cup too, is on our Nutrition page (link at the bottom of the site).',
   },
