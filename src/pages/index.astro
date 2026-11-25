@@ -40,10 +40,28 @@ import kidsSketch from '../assets/lifestyle/kids-sketch.webp';
           <SectionHeader id="flavours-title" title="Build your order" intro="Tap a flavour to watch it pour, add it to your order, and send it straight to us on WhatsApp." />
         </div>
         <div data-reveal="pop"><OrderBuilder /></div>
-        <p class="me-flavour-intro" data-reveal>And here's the real thing, sealed in our 200g cups:</p>
-        <ul class="me-flavour-grid">
-          {FLAVOURS.map((f, i) => <li data-reveal style={`--delay:${(i % 4) * 80}ms`}><FlavourCard flavour={f} /></li>)}
-        </ul>
+        <div class="me-cupview" data-cupview data-size="120">
+          <div class="me-cupview__head" data-reveal>
+            <p class="me-flavour-intro"><span data-for="120">Every flavour, in our 120g cup:</span><span data-for="200">And here's the real thing, sealed in our 200g cups:</span></p>
+            <div class="me-cupview__toggle" role="group" aria-label="Show cup size">
+              <button type="button" data-size-btn="120" aria-pressed="true">120g</button>
+              <button type="button" data-size-btn="200" aria-pressed="false">200g</button>
+            </div>
+          </div>
+          <ul class="me-flavour-grid">
+            {FLAVOURS.map((f, i) => <li data-reveal style={`--delay:${(i % 4) * 80}ms`}><FlavourCard flavour={f} /></li>)}
+          </ul>
+        </div>
+        <script>
+          // 120g / 200g switch for the flavour cards
+          document.querySelectorAll<HTMLElement>('[data-cupview]').forEach((view) => {
+            const btns = view.querySelectorAll<HTMLButtonElement>('[data-size-btn]');
+            btns.forEach((b) => b.addEventListener('click', () => {
+              view.dataset.size = b.dataset.sizeBtn;
+              btns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+            }));
+          });
+        </script>
       </div>
     </section>
 

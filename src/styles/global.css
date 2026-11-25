@@ -440,3 +440,18 @@ img { max-width: 100%; }
   .me-nutri thead th { white-space: normal; vertical-align: bottom; font-size: 0.8125rem; }
   .me-nutri tbody th { white-space: normal; }
 }
+
+/* ===== Flavour cards: 120g / 200g switch ===== */
+.me-cupview__head { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); margin-bottom: var(--space-6); }
+.me-cupview__head .me-flavour-intro { margin: 0; }
+.me-cupview__toggle { display: inline-flex; padding: 4px; border-radius: var(--radius-pill); background: var(--white); box-shadow: var(--shadow-card); }
+.me-cupview__toggle button {
+  min-width: 84px; min-height: 44px; padding: 0 var(--space-5, 20px); border: 0; border-radius: var(--radius-pill); background: transparent;
+  font: 800 1rem/1 var(--font-body); color: var(--plum); cursor: pointer;
+}
+.me-cupview__toggle button[aria-pressed="true"] { background: var(--plum); color: var(--white); }
+.me-cupview__toggle button:focus-visible { outline: 3px solid transparent; box-shadow: var(--shadow-focus); }
+[data-cupview][data-size="120"] .me-photo--200,
+[data-cupview][data-size="200"] .me-photo--120,
+[data-cupview][data-size="120"] [data-for="200"],
+[data-cupview][data-size="200"] [data-for="120"] { display: none; }

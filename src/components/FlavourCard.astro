@@ -6,10 +6,20 @@ const { flavour } = Astro.props;
 ---
 <article class="me-flavour" style={`--tint:${flavour.colour}`}>
   <div class="me-flavour__media">
+    {flavour.swirl && (
+      <Image
+        class="me-photo me-photo--120"
+        src={flavour.swirl}
+        alt={`${flavour.name} Myela frozen yoghurt in a 120g cup`}
+        widths={[240, 360, 480, 640]}
+        sizes="(max-width: 1023px) 46vw, 280px"
+        loading="lazy"
+      />
+    )}
     <Image
-      class="me-photo"
-      src={flavour.swirl ?? flavour.image}
-      alt={`${flavour.name} Myela frozen yoghurt in a 120g cup`}
+      class="me-photo me-photo--200"
+      src={flavour.image}
+      alt={`${flavour.name} Myela frozen yoghurt, sealed in a 200g cup`}
       widths={[240, 360, 480, 640]}
       sizes="(max-width: 1023px) 46vw, 280px"
       loading="lazy"
