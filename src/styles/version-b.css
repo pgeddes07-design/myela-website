@@ -102,3 +102,8 @@
   .me-builder__line { padding-left: var(--space-3); }
   .me-builder__flav { font-size: 0.9375rem; }
 }
+
+/* ---------- Hero logo: bigger, sitting further right over the headline (no badge) ---------- */
+.v-b .hx__logo { width: clamp(220px, 22vw, 310px); margin: 0 0 var(--space-4) clamp(24px, 9vw, 170px); }
+@media (max-width: 1023px) { .v-b .hx__logo { width: 210px; margin-left: 48px; } }
+@media (max-width: 760px) { .v-b .hx__logo { width: 168px; margin: 0 auto var(--space-2); justify-self: center; } }
